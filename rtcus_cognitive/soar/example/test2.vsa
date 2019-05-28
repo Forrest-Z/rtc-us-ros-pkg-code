@@ -1,0 +1,19 @@
+VERSION 4
+/test2/test2.dm
+0	ROOT test2 test2 1
+1	0	FOPERATOR _firstload _firstload.soar 2
+2	0	FOLDER all all 3
+3	0	FOLDER elaborations elaborations 4
+4	3	FOPERATOR _all _all.soar 5
+5	3	FOPERATOR top-state top-state.soar 6
+6	0	OPERATOR initialize-test2 initialize-test2.soar 7
+7	0	OPERATOR move move.soar 8
+8	0	OPERATOR move-E move-E.soar 9
+9	0	OPERATOR move-N move-N.soar 10
+10	0	OPERATOR move-NE move-NE.soar 11
+11	0	OPERATOR move-NW move-NW.soar 12
+12	0	OPERATOR move-S move-S.soar 13
+13	0	OPERATOR move-SE move-SE.soar 14
+14	0	OPERATOR move-SW move-SW.soar 15
+15	0	OPERATOR move-W move-W.soar 17
+END

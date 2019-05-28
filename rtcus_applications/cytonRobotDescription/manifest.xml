@@ -1,0 +1,15 @@
+<package>
+  <description brief="cythonRobotDescription">
+
+     cythonRobotDescription
+
+  </description>
+  <author>GeuS</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/cythonRobotDescription</url>
+  <depend package="urdf"/>
+
+</package>
+
+

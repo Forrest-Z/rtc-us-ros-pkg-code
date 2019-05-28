@@ -1,0 +1,4 @@
+<launch>
+   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rtcus_erratic_slam)/config/rviz-config.vcg"/>
+   <node pkg="rxtools" type="rxplot" name="rxplot" args="/battery_state/charge"/>
+</launch>

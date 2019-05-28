@@ -1,0 +1,6 @@
+<launch>	
+	<node pkg="sound_play" type="soundplay_node.py" name="voice" machine="erratic">
+  	</node>
+  	<node pkg="rtcus_erratic_slam" type="rtcus_erratic_teleop.py" name="talk_GUI">
+  	</node>
+</launch>

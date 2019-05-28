@@ -1,0 +1,26 @@
+<launch>
+	<param name="/use_sim_time" value="true" />
+
+	<node pkg="map_server" type="map_server" name="map_server" args="$(find rtcus_dwa)/tests/demo_config/corridors.pgm 2">
+	</node>
+
+	<node pkg="stage_rep" type="stageros" name="stageros"
+		args="$(find rtcus_dwa)/tests/demo_config/stage_demo.world" output="screen">
+		<param name="base_watchdog_timeout" value="0.2" />
+		<remap from="base_scan" to="scan"/>
+	</node>
+
+    <remap from="state_correction" to="odom" />
+    
+	<include file="$(find rtcus_dwa)/launch/motorbike_config.xml"/>
+	<include file="$(find rtcus_navigation)/launch/performance_monitor.xml"/>
+	<include file="$(find rtcus_dwa)/launch/action_and_state_monitor.xml"/>
+	
+	<node name="configuration_window" pkg="dynamic_reconfigure" type="reconfigure_gui" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rtcus_dwa)/tests/demo_config/rviz.vcg" />
+<!--	
+	<node name="rxplot" pkg="rxtools" type="rxplot"
+		args="dwa_status/dwa_loop_time dwa_status/heading_cost dwa_status/velocity_cost dwa_status/clearance_cost cmd_vel/linear/x cmd_vel/angular/z" />
+  -->
+ 
+</launch>

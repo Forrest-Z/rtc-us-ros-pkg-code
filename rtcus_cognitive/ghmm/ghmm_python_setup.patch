@@ -1,0 +1,23 @@
+Index: ghmmwrapper/setup.py
+===================================================================
+--- ghmmwrapper/setup.py	(revision 2290)
++++ ghmmwrapper/setup.py	(working copy)
+@@ -37,6 +37,7 @@
+ 
+ from distutils.core import setup,Extension
+    
++import roslib
+ setup(name="ghmmwrapper",
+       version="0.8",
+       description="Python wrapper for the GHMM library",
+@@ -48,7 +49,8 @@
+                                include_dirs = ['..'],
+                                library_dirs = ['../ghmm/.libs'],
+                                libraries = ['ghmm', 'm', 'pthread', 'xml2', 'z'],
+-                               extra_compile_args = ["-O2", "-pipe", "-Wall"], # -g might help debugging
++			       runtime_library_dirs = [roslib.packages.get_pkg_dir('ghmm')+"/lib"],
++                               extra_compile_args = ["-O2", "-pipe", "-Wall",'-Wl,-rpath,%s/lib'%roslib.packages.get_pkg_dir('ghmm')+"/lib"], # -g might help debugging
+                                depends = ['wrapper_alphabet.i', 'wrapper_cmodel.i', 'wrapper_cseq.i',
+                                           'wrapper_dmodel.i', 'wrapper_dpmodel.i', 'wrapper_dpseq.i',
+                                           'wrapper_dseq.i', 'wrapper_xmlfile.i']
+

@@ -1,0 +1,8 @@
+digraph G {
+"/base_link" -> "/arm"[label="Broadcaster: /cython_state_publisher\nAverage rate: 2470000.000 Hz\nMost recent transform: 1290708208.193 sec old \nBuffer length: 0.000 sec\n"];
+"/base_link" -> "/forearm"[label="Broadcaster: /cython_state_publisher\nAverage rate: 2470000.000 Hz\nMost recent transform: 1290708208.193 sec old \nBuffer length: 0.000 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1290708208.193"[ shape=plaintext ] ;
+ }->"/base_link";
+}

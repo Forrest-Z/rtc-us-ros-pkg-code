@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="soar" type="basic_soar_test" name="test"/>
+</launch>

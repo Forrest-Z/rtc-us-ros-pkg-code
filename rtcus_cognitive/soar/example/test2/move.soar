@@ -1,0 +1,34 @@
+sp {test2*apply*move
+   (state <s> ^operator <op>
+              ^io.output-link <out>)
+   (<op> ^name move
+         ^direction <dir>)
+-->
+   (<out> ^move.move_dir <dir>)
+}
+
+sp {test2*apply*move*remove-move
+   (state <s> ^operator.name move
+              ^io.output-link <out>)
+   (<out> ^move <move>)
+   (<move> ^status complete)
+-->
+   (<out> ^move <move> -)
+}
+
+sp {test2*apply*move*create-last-direction
+   (state <s> ^operator <o>)
+   (<o> ^name move
+        ^direction <dir>)
+-->
+   (<s> ^last-dir <dir>)
+}
+
+sp {test2*apply*move*remove-last-direction
+   (state <s> ^operator <o>
+              ^last-dir <ld>)
+   (<o> ^name move
+        ^direction <> <ld>)
+-->
+   (<s> ^last-dir <ld> -)
+}

@@ -1,0 +1,16 @@
+<package>
+  <description brief="deap">
+     This package is a wrapper of the "Distributed evolutionary algorithms in python" designed and developed by François-Michel De Rainville, Félix-Antoine Fortin and Marc-André Gardner.
+
+It is useful to research about evolutive robotics or as a mechanism to solve optimization problems.
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/deap</url>
+  <export>
+  	<python path="${prefix}/deap-0.6/"/>
+  </export>
+</package>
+
+

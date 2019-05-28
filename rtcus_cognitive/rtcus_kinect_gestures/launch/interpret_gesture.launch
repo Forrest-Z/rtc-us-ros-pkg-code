@@ -1,0 +1,17 @@
+<launch>
+	<env name="LD_LIBRARY_PATH" value="/opt/ros/diamondback/stacks/visualization_common/ogre/build/ogre_src_v1-7-1/build/lib/" />
+
+	<include  file="$(find openni_camera)/launch/openni_node.launch"/>
+
+	<node pkg="openni_tracker" type="openni_tracker" name="openni_tracker"/>
+
+	<node pkg="rviz" type="rviz" name="rviz" args="--display-config $(find rtcus_kinect_gestures)/config/rviz/rviz-config.vcg"/>
+
+	<node pkg="rxtools" name="rxconsole" type="rxconsole"/>
+
+	<!-- <rosparam file="$(find rtcus_kinect_gestures)/config/gesture_params.yaml" command="load" /> -->
+
+	<node pkg="rtcus_kinect_gestures" type="plot_test_hand_elbow_register.py" name="plot_test_hand_elbow_register" args="" output="screen">
+	</node>
+	
+</launch>

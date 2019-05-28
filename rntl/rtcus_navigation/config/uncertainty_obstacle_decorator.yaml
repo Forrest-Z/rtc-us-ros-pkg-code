@@ -1,0 +1,11 @@
+#this configuration should be located in the specific "navigation_node/perception_port" namespace
+
+artificial_obstacles:
+   artificial_obstacle_fillup_distance: 0.6 #meters. Create new artificial obstacles. Specially focused to create an obstacle bound to uncertain areas 
+   #distance_cutoff: 0.1 #meters.
+   distance_cutoff: 0 #meters.
+   #(0 meters to deactivate) removes obstacles from the input point cloud to improve the performance 
+   publish_obstacle_decoration_info: true #publishes in a topic the created artificial obstacles for representation
+   close_back: true
+   
+   

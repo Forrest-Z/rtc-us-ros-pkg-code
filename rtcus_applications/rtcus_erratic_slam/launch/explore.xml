@@ -1,0 +1,18 @@
+<launch>
+<node pkg="explore" type="explore" name="explore" machine="erratic_hc">
+    	<remap from="explore/map" to="map2" />
+    	<remap from="slam_entropy" to="gmapping/entropy"/>
+    	
+    	<param name="planner_frequency" value="20"/>
+    	<param name="visualize" value="true"/>
+    	<param name="navfn/robot_base_frame" value="base_footprint"/>
+    	
+    	<rosparam file="$(find rtcus_erratic_slam)/config/footprint.yaml" command="load" />
+	    <rosparam file="$(find rtcus_erratic_slam)/config/costmap_common.yaml" command="load" ns="explore_costmap" />
+	    <rosparam file="$(find rtcus_erratic_slam)/explore/explore_costmap.yaml" command="load" />
+	    <param name="potential_scale" value="0.005"/>
+	    <param name="orientation_scale" value="0.0"/>
+	    <param name="gain_scale" value="1.0"/>
+	    <param name="close_loops" value="true"/>
+    </node>
+</launch>

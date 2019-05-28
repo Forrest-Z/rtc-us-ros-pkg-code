@@ -1,0 +1,71 @@
+<launch>
+	<param name="/use_sim_time" value="true" />
+	<arg name="output" default="log" />
+	<arg name="full_performance" default="false" />
+	<arg name="simulation" default="true" />
+	<arg name="defer_start" default="false" />
+
+	<!-- ========================================================================= -->
+	<arg name="specific_config" default="$(find rtcus_navigation)/" />
+	<arg name="kinodynamic_model"
+		default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/motorbike_kynodynamic.yaml" />
+	<arg name="robot_shape" default="$(find rtcus_robot_shapes)/config/motorbike_shape.yaml" />
+
+
+	<arg name="simulated_vehicle_kinodynamics"
+		default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/motorbike_kynodynamic.yaml" />
+	<!-- ========================================================================= -->
+	<arg name="custom_state_estimation_motion_model" default="false" />
+	<arg name="custom_state_estimation_motion_model_config" default="$(arg kinodynamic_model)" />
+	<!-- ========================================================================= -->
+
+
+	<!-- ROBOT AND WORLD SIMULATION -->
+	<group>
+		<!-- DIFFERENCE -->
+		<remap from="cmd_vel_stamped" to="delayed_cmd_vel" />
+		<remap from="cmd_vel" to="unused_cmd_vel" />
+		<!-- DIFFERENCE -->
+		<remap from="base_scan" to="scan" />
+		<include file="$(find stage_rep)/launch/stage_rep_node.launch">
+			<arg name="output" value="log" />
+			<arg name="world_file"
+				value="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" />
+			<arg name="robot_shape" value="$(arg robot_shape)" />
+			<arg name="simulation_configuration"
+				value="$(find rtcus_navplanner_tp)/config/simulation_configuration.yaml" />
+			<arg name="simulated_vehicle_kinodynamics" default="$(arg simulated_vehicle_kinodynamics )" />
+		</include>
+	</group>
+
+	<!-- DELAY SIMULATION -->
+	<!-- DIFFERENCE -->
+	<node name="simulation_delays" pkg="delayed_topics"
+		type="simulated_delayed_comunication.py" output="log">
+		<rosparam command="load"
+			file="$(find rtcus_navplanner_tp)/launch/delayed_navigation_experiment/topics_delay_config.yaml" />
+	</node>
+	<!-- DIFFERENCE -->
+
+	<!-- NAVIGATION NODE -->
+	<group>
+		<!-- DIFFERENCE -->
+		<remap from="state_correction" to="delayed_odom" />
+		<remap from="scan" to="delayed_scan" />
+		<!-- DIFFERENCE -->
+		<include file="$(find rtcus_dwa)/launch/dwa_node_default_config.xml">
+			<arg name="output" value="$(arg output)" />
+			<arg name="navigation_node_name" value="navigation_node" />
+			<arg name="robot_shape" value="$(arg robot_shape)" />
+			<arg name="kinodynamic_model" value="$(arg kinodynamic_model)" />
+			<arg name="specific_config"
+				value="$(find rtcus_dwa)/launch/delayed_navigation_experiment/dwa_node_config_overloads.yaml" />
+		</include>
+	</group>
+
+	<!-- INTROSPECTION -->
+	<include file="$(find rtcus_dwa)/launch/introspection.launch"
+		unless="$(arg full_performance)" />
+	<include file="$(find rtcus_dwa)/launch/delayed_navigation_experiment/plot_delayed.launch"/>
+</launch>

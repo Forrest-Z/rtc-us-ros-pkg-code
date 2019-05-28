@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+
+<robot>
+
+    <!-- Included URDF Files 
+    <include filename="$(find erratic_description)/urdf/materials.urdf.xacro" />
+    <include filename="$(find erratic_description)/urdf/erratic_computer.xacro" />
+    <include filename="$(find erratic_description)/urdf/erratic_wheel.xacro" />
+    -->
+
+    <property name="base_link_to_top" value="0.0795" />
+    <property name="base_link_to_front" value="0.2025" />
+    <property name="base_link_to_back" value="0.1975" />
+
+    <macro name="erratic">
+        <!-- base_footprint is a ficsrdf: An XML semantic robot description and parser.
+titious link(frame) that is on the ground right below base_link origin,
+             navigation stack depends on this frame -->
+        <link name="base_footprint">
+            <inertial>
+                <mass value="0.0001" />
+                <origin xyz="0 0 0" />
+                <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001" iyz="0.0" 
+                         izz="0.0001" />
+            </inertial>
+            
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.001 0.001 0.001" />
+                </geometry>
+                <material name="Green" />
+            </visual>
+            
+            <collision>
+                <origin xyz="0 0 0.128" rpy="0 0 0" />
+                <geometry>
+                  <box size="0.001 0.001 0.001" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="base_footprint_joint" type="fixed">
+            <origin xyz="0.063 0 0.128" rpy="0 0 0" />
+            <parent link="base_footprint"/>
+            <child link="base_link" />
+        </joint>
+
+        <!-- Links and Joints (i.e., the robot) -->
+        <link name="base_link">
+            <inertial>
+                <mass value="20" />
+                <origin xyz="0 0 0" />
+                <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                         iyy="1.0" iyz="0.0" 
+                         izz="1.0" />
+            </inertial>
+            
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://erratic_description/meshes/collada/erratic_base_link.dae"/>
+                </geometry>
+                <material name="Blue" />
+            </visual>
+            
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://erratic_description/meshes/collada/erratic_base_link.dae"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="base_caster_support_joint" type="continuous">
+            <origin xyz="-0.188 0 -0.043" rpy="0 0 0" />
+            <parent link="base_link" />
+            <child link="base_caster_support_link"/>
+            
+            <axis xyz="0 0 1" />
+            <anchor xyz="0.01 0 0" />
+            <limit effort="100" velocity="100" k_velocity="0" />
+            <joint_properties damping="0.0" friction="0.0" />
+        </joint>
+
+        <transmission type="pr2_mechanism_model/SimpleTransmission" name="base_caster_support_trans">
+            <actuator name="base_caster_support_motor" />
+            <joint name="base_caster_support_joint" />
+            <mechanicalReduction>1.0</mechanicalReduction>
+        </transmission>
+
+        <link name="base_caster_support_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://erratic_description/meshes/collada/erratic_caster_support_link.dae"/>
+                </geometry>
+            </visual>
+        </link>
+
+        <joint name="caster_wheel_joint" type="continuous">
+            <origin xyz="-0.025 0 -0.0469" rpy="0 0 0" />
+            <parent link="base_caster_support_link" />
+            <child link="caster_wheel_link" />
+            
+            <axis xyz="0 1 0" />
+            <anchor xyz="0 0 0" />
+            <limit effort="100" velocity="100" k_velocity="0" />
+            <joint_properties damping="0.0" friction="0.0" />
+        </joint>
+
+        <transmission type="pr2_mechanism_model/SimpleTransmission" name="caster_wheel_trans">
+            <actuator name="caster_wheel_motor" />
+            <joint name="caster_wheel_joint" />
+            <mechanicalReduction>1.0</mechanicalReduction>
+        </transmission>
+
+        <link name="caster_wheel_link">
+            <inertial>
+                <mass value="0.1" /> 
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <inertia  ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+                          iyy="0.015218160428" iyz="-0.000004273467"
+                          izz="0.011763977943" />
+            </inertial>
+            
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://erratic_description/meshes/collada/erratic_caster_wheel_link.dae"/>
+                </geometry>
+                <material name="Black"/>
+            </visual>
+            
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://erratic_description/meshes/collada/erratic_caster_wheel_link.dae"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <!-- MACRO INSTANTIATION -->
+
+<!--
+        <erratic_computer parent="base_link">
+            <origin xyz="${-base_link_to_back + computer_size_x/2 + 0.02} 0 ${base_link_to_top}" rpy="0 0 0" />
+        </erratic_computer>
+        
+        <erratic_wheel suffix="left" parent="base_link">
+            <origin xyz="0.075 0.16525 -0.053" rpy="0 0 0" />
+        </erratic_wheel>
+        
+        <erratic_wheel suffix="right" parent="base_link">
+            <origin xyz="0.075 -0.16525 -0.053" rpy="0 0 0" />
+        </erratic_wheel>
+-->8
+    </macro>
+</robot>

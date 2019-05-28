@@ -1,0 +1,19 @@
+<package>
+  <description brief="mrw_robot_agent">
+
+     mrw_robot_agent
+
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/mrw_robot_agent</url>
+  
+  <depend package = "rospy"/>
+  <depend package = "std_msgs"/>
+  <depend package = "geometry_msgs"/>
+  <depend package = "nav_msgs"/>
+
+</package>
+
+

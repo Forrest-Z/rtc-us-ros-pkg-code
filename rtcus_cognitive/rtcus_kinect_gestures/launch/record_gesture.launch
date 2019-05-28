@@ -1,0 +1,7 @@
+<launch>
+ 	<arg name="output_name"/>
+	<include  file="$(find openni_camera)/launch/openni_node.launch"/>
+	<node pkg="openni_tracker" type="openni_tracker" name="openni_tracker"/>
+	<node pkg="rviz" type="rviz" name="rviz" args="--display-config $(find rtcus_kinect_gestures)/config/rviz/record_gesture_atc.vcg"/>
+	<node pkg="rxtools" name="rxconsole" type="rxconsole"/>
+</launch>

@@ -1,0 +1,42 @@
+<package>
+	<description brief="rtcus_conversions">
+
+		Conversions between data types is extremely important in a platform like ROS
+		which tries to integrate and unify huge set of software packages. This package
+		provides a generic typed and extensible c++ library with only one function:
+		convert (srcType,dstType). It is based on template specialization. Here an example:
+
+template&lt;&gt;
+  inline void Conversions::convert&lt;Twist2D, Twist&gt;(const Twist2D&amp; src, Twist&amp; dst)
+  {
+    dst.linear.x = src.linear;
+    dst.linear.y = src.lateral;
+    dst.angular.z = src.angular;
+  }
+  		
+		
+		New conversions included in this library will be added by demand and it is open
+		to contributions.
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_conversions</url>
+
+	<export>
+		<cpp
+			cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include"
+			lflags="-L${prefix}/lib -lrtcus_conversions" />
+	</export>
+
+	<depends package="roscpp" />
+	<depend package="mrpt_bridge" />
+	<depend package="geometry_msgs" />
+	<depend package="sensor_msgs" />
+	<depend package="rtcus_nav_msgs" />
+	<depend package="nav_msgs" />
+	<depend package="laser_geometry"/>
+</package>
+
+

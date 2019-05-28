@@ -1,0 +1,17 @@
+<package>
+  <description brief="rtcus_shared_dwa">
+
+     rtcus_shared_dwa
+
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rtcus_shared_dwa</url>
+  
+  <depend package="rtcus_dwa"/>
+  <depend package="diagnostic_updater"/>
+
+</package>
+
+

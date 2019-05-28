@@ -1,0 +1,76 @@
+Background\ ColorR=0
+Background\ ColorG=0
+Background\ ColorB=0
+Fixed\ Frame=/map
+Target\ Frame=<Fixed Frame>
+Map.Alpha=0,7
+Map.Draw\ Behind=0
+Map.Enabled=1
+Map.Topic=/simulator_server/map
+TF.All\ Enabled=1
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Show\ Arrows=1
+TF.Show\ Axes=1
+TF.Show\ Names=1
+TF.Update\ Interval=0
+Tool\ 2D\ Nav\ GoalTopic=robot_0/move_base_simple/goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::OrbitViewController
+Camera\ Config=0.109002 3.13471 143.161 -22.948 -12.4127 -30.8504
+Property\ Grid\ State=selection=Fixed Frame;expanded=.Global Options,.Global StatusTopStatus,Map.Enabled,TF.Enabled.TF.StatusTopStatus,TF.Enabled.TF.Frames,TF./robot_0/base_footprint/robot_0/base_footprint,TF./robot_0/base_laser_link/robot_0/base_laser_link,TF./robot_0/base_link/robot_0/base_link,TF./robot_0/odom/robot_0/odom,TF./robot_1/base_footprint/robot_1/base_footprint,TF./robot_1/base_laser_link/robot_1/base_laser_link,TF./robot_1/base_link/robot_1/base_link,TF./robot_1/odom/robot_1/odom,TF./robot_2/base_footprint/robot_2/base_footprint,TF./robot_2/base_laser_link/robot_2/base_laser_link,TF./robot_2/base_link/robot_2/base_link,TF./robot_2/odom/robot_2/odom,TF./robot_3/base_footprint/robot_3/base_footprint,TF./robot_3/base_laser_link/robot_3/base_laser_link,TF./robot_3/base_link/robot_3/base_link,TF./robot_3/odom/robot_3/odom,TF./robot_4/base_footprint/robot_4/base_footprint,TF./robot_4/base_laser_link/robot_4/base_laser_link,TF./robot_4/base_link/robot_4/base_link,TF./robot_4/odom/robot_4/odom,TF./robot_5/base_footprint/robot_5/base_footprint,TF./robot_5/base_laser_link/robot_5/base_laser_link,TF./robot_5/base_link/robot_5/base_link,TF./robot_5/odom/robot_5/odom,TF./robot_6/base_footprint/robot_6/base_footprint,TF./robot_6/base_laser_link/robot_6/base_laser_link,TF./robot_6/base_link/robot_6/base_link,TF./robot_6/odom/robot_6/odom,TF./robot_7/base_footprint/robot_7/base_footprint,TF./robot_7/base_laser_link/robot_7/base_laser_link,TF./robot_7/base_link/robot_7/base_link,TF./robot_7/odom/robot_7/odom,TF./robot_8/base_footprint/robot_8/base_footprint,TF./robot_8/base_laser_link/robot_8/base_laser_link,TF./robot_8/base_link/robot_8/base_link,TF./robot_8/odom/robot_8/odom,TF./robot_3/map/robot_3/map,TF.Enabled.TF.Tree,TF./robot_0/odomTree/robot_0/odom,TF./robot_0/base_footprintTree/robot_0/base_footprint,TF./robot_0/base_linkTree/robot_0/base_link,TF./robot_0/base_laser_linkTree/robot_0/base_laser_link,TF./robot_1/odomTree/robot_1/odom,TF./robot_1/base_footprintTree/robot_1/base_footprint,TF./robot_1/base_linkTree/robot_1/base_link,TF./robot_1/base_laser_linkTree/robot_1/base_laser_link,TF./robot_2/odomTree/robot_2/odom,TF./robot_2/base_footprintTree/robot_2/base_footprint,TF./robot_2/base_linkTree/robot_2/base_link,TF./robot_2/base_laser_linkTree/robot_2/base_laser_link,TF./robot_3/odomTree/robot_3/odom,TF./robot_3/base_footprintTree/robot_3/base_footprint,TF./robot_3/base_linkTree/robot_3/base_link,TF./robot_3/base_laser_linkTree/robot_3/base_laser_link,TF./robot_4/odomTree/robot_4/odom,TF./robot_4/base_footprintTree/robot_4/base_footprint,TF./robot_4/base_linkTree/robot_4/base_link,TF./robot_4/base_laser_linkTree/robot_4/base_laser_link,TF./robot_5/odomTree/robot_5/odom,TF./robot_5/base_footprintTree/robot_5/base_footprint,TF./robot_5/base_linkTree/robot_5/base_link,TF./robot_5/base_laser_linkTree/robot_5/base_laser_link,TF./robot_6/odomTree/robot_6/odom,TF./robot_6/base_footprintTree/robot_6/base_footprint,TF./robot_6/base_linkTree/robot_6/base_link,TF./robot_6/base_laser_linkTree/robot_6/base_laser_link,TF./robot_7/odomTree/robot_7/odom,TF./robot_7/base_footprintTree/robot_7/base_footprint,TF./robot_7/base_linkTree/robot_7/base_link,TF./robot_7/base_laser_linkTree/robot_7/base_laser_link,TF./robot_8/odomTree/robot_8/odom,TF./robot_8/base_footprintTree/robot_8/base_footprint,TF./robot_8/base_linkTree/robot_8/base_link,TF./robot_8/base_laser_linkTree/robot_8/base_laser_link,TF./robot_3/mapTree/robot_3/map;scrollpos=0,0;splitterpos=269,539;ispageselected=1
+[Display0]
+Name=Map
+Package=rviz
+ClassName=rviz::MapDisplay
+[Display1]
+Name=TF
+Package=rviz
+ClassName=rviz::TFDisplay
+[TF.]
+[TF./robot_0]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_1]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_2]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_3]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+mapEnabled=1
+odomEnabled=1
+[TF./robot_4]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_5]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_6]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_7]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1
+[TF./robot_8]
+base_footprintEnabled=1
+base_laser_linkEnabled=1
+base_linkEnabled=1
+odomEnabled=1

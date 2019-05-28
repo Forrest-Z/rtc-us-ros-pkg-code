@@ -1,0 +1,20 @@
+<package>
+  <description brief="cython_driver">
+
+     cyton_driver
+
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  
+  <export>
+  <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib  -L${prefix}/lib -lecFoundCore -lecCytonHardwareInterface -lecActinSE"/>
+  <doxymaker external="http://orocos.org/kdl" />
+  <rosdoc config="rosdoc.yaml" />
+  </export>
+
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/cython_driver</url>
+</package>
+
+

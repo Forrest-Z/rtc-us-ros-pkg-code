@@ -1,0 +1,9 @@
+<stack>
+  <description brief="rntl">The Robot Navigation Template Library</description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>GPLv3</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rntl</url>
+  <depend stack="ros" />
+</stack>
+

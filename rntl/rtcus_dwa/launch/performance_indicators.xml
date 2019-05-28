@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="rxtools" type="rxplot" name="plotting_data"
+		args="--buffer=5 --title='Preformance indicators' --ymin=0 /navigation_node/perception_port/artificial_obstacles/count " />
+</launch>

@@ -1,0 +1,79 @@
+define block model
+(
+  size [0.3 0.3 0.3]
+  gui_nose 0
+)
+
+define topurg laser
+(
+
+  range_max 30.0
+  fov 270.25
+  samples 1081
+  # generic model properties
+  color "black"
+  size [ 0.05 0.05 0.1 ]
+)
+
+define robot_instance position
+(
+  size [0.65 0.65 0.25]
+  origin [-0.05 0 0 0]
+  gui_nose 1
+  drive "diff"
+  topurg(pose [ 0.275 0.000 0 0.000 ])
+)
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+# set the resolution of the underlying raytrace model in meters
+resolution 0.02
+
+interval_sim 100  # simulation timestep in milliseconds
+
+
+window
+( 
+  size [ 745.000 448.000 ] 
+
+  rotate [ 0.000 0.000 ]
+  scale 28.806 
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "ground"
+  bitmap "../maps/willow-full.pgm"
+  size [58.4 52.6 0.5]
+  pose [ -26.300 29.200 0 90.000 ]
+)
+
+# throw in a robot
+robot_instance( pose [ -46.600 48.260 0 -37.700 ] name "robot_0" color "red")
+robot_instance( pose [ -10.070 45.270 0 148.490 ] name "robot_1" color "blue")
+robot_instance( pose [ -13.860 40.230 0 108.380 ] name "robot_2" color "green")
+robot_instance( pose [ -25.530 42.770 0  28.170 ] name "robot_3" color "orange")
+robot_instance( pose [ -39.820 32.850 0 -43.450 ] name "robot_4" color "yellow")
+robot_instance( pose [ -43.180 16.140 0  28.170 ] name "robot_5" color "pink")
+robot_instance( pose [ -32.310 14.990 0  28.170 ] name "robot_6" color "white")
+robot_instance( pose [ -36.060 46.660 0  60.720 ] name "robot_7" color "black")
+robot_instance( pose [ -44.370 22.270 0  28.170 ] name "robot_8" color "cyan")
+robot_instance( pose [ -13.410 10.140 0  28.170 ] name "robot_9" color "brown")
+
+block( pose [ -24.269 48.001 0 180.000 ] color "red")

@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="rxtools" type="rxplot" name="plotting_data"
+		args="--buffer=5 --title='clearance normalization values' --ymin=0 /shared_control_dwa_move_base/clearance_method/normalization_distance/data /shared_control_dwa_move_base/clearance_method/max_admisible_velocity/data" />
+</launch>

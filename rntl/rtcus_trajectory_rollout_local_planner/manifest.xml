@@ -1,0 +1,27 @@
+<package>
+	<description brief="rtcus_trajectory_rollout_local_planner">
+
+		A wrapper for the rtcus_navigation
+		arthicecture of the ros base local
+		planner for the ROS stack
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_trajectory_rollout_local_planner</url>
+	<depend package="rtcus_navigation" />
+	<depend package="rtcus_navigation_tools" />
+	<depend package="rtcus_conversions" />
+	<depend package="rtcus_stamp" />
+	<depend package="rtcus_nav_msgs" />
+	<depend package="rtcus_robot_shapes"/>
+	<depend package="rtcus_kinodynamic_description"/>
+	
+	<depend package="base_local_planner" />
+	<depend package="navfn" />
+	<depend package="costmap_2d" />
+
+</package>
+
+

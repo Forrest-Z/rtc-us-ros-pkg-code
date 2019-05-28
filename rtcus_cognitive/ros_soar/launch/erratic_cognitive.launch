@@ -1,0 +1,12 @@
+<launch>
+
+	<include file="$(find ros_soar)/launch/distributed_node_architecture.xml"/>
+	<include file="$(find ros_soar)/launch/erratic_hardware.xml"/>
+
+	<node pkg="ros_soar" type="soar_test_erratic" name="soar_node" args="">
+	    <param name="speed" value="0.01"/>
+	    <remap from="commands" to="/cmd_vel"/>
+	    <remap from="sonar" to="/sonar"/>
+	</node>
+	
+</launch>

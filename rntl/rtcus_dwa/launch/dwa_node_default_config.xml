@@ -1,0 +1,47 @@
+<launch>
+	<arg name="planner_type" default="dwa_demo_test" />
+	<arg name="navigation_node_pkg" default="rtcus_dwa" />
+	<arg name="navigation_node_name" default="navigation_node" />
+	<arg name="defer_start" />
+
+	<arg name="prefix" default="" />
+	<arg name="output" default="log" />
+	<!-- DEFAULT CONFIGURATIONS -->
+	<arg name="kinodynamic_model"
+		default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/motorbike_kynodynamic.yaml" />
+
+	<arg name="robot_shape" default="$(find rtcus_robot_shapes)/config/motorbike_shape.yaml" />
+
+	<arg name="default_config" default="$(find rtcus_dwa)/config/dwa_default_config.yaml" />
+
+	<arg name="specific_config"
+		default="$(find rtcus_dwa)/config/clearance_parameters/default_clearance_motorbike.yaml" />
+
+	<!-- NODE INSTANSIATION -->
+	<node pkg="$(arg navigation_node_pkg)" name="$(arg navigation_node_name)"
+		type="$(arg planner_type)" output="$(arg output)" launch-prefix="$(arg prefix)">
+		<!-- default navigation architecture config -->
+		<rosparam command="load"
+			file="$(find rtcus_navigation)/config/default_node_config.yaml" />
+
+		<!-- default perception port -->
+		<rosparam command="load" ns="perception_port"
+			file="$(find rtcus_navigation)/config/uncertainty_obstacle_decorator.yaml" />
+
+		<!-- dwa overload default architecture config -->
+		<rosparam command="load"
+			file="$(find rtcus_dwa)/config/default_navigation_architecture.yaml" />
+
+		<!-- planner config -->
+		<rosparam command="load" file="$(arg default_config)" />
+
+		<!-- vehicle kinodynamics -->
+		<rosparam command="load" ns="kinodynamic_model" file="$(arg kinodynamic_model)" />
+
+		<!-- vehicle shape -->
+		<rosparam command="load" ns="shape_model" file="$(arg robot_shape)" />
+
+		<!-- custom or overload config -->
+		<rosparam command="load" file="$(arg specific_config)" />
+	</node>
+</launch>

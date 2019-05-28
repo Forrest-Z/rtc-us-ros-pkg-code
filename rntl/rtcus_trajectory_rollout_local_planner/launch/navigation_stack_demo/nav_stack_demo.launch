@@ -1,0 +1,13 @@
+<launch>
+	<node pkg="stage_rep" type="stageros" name="stageros"
+		args="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" output="log">
+		<param name="base_watchdog_timeout" value="0.2" />
+		<remap from="scan" to="base_scan"/>
+	</node>
+
+	<include file="$(find rtcus_trajectory_rollout_local_planner)/launch/navigation_stack_demo/move_base_local.launch"/>
+
+	<node name="rviz" pkg="rviz" type="rviz" ouput="screen"
+		args="-d $(find rtcus_trajectory_rollout_local_planner)/launch/navigation_stack_demo/rviz-config.vcg" />
+</launch>

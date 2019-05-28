@@ -1,0 +1,6 @@
+<launch>
+  <!--<machine name="erratic" address="erratic" user="erratic" password="erratic"/>--> 
+    <!--<machine name="erratic_hc" address="erratic" user="erratic" password="erratic"/>--> 
+    <!--<machine name="erratic" address="erratic" user="erratic" password="erratic"/>-->
+    <machine name="erratic" address="erratic" user="erratic" password="erratic"/>
+</launch>

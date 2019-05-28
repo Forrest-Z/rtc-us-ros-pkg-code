@@ -1,0 +1,5 @@
+ - map dynamic reconfigure
+ - (in stageros.cpp) coherent time handling concerning the sensor and actuators update interval  (but odometry and action must be the same frequency)
+ - (in stageros.cpp) camera topic
+ - stalled collision topic
+ - velocity model with acceleration constraints

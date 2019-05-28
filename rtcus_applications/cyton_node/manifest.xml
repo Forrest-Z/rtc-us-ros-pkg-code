@@ -1,0 +1,19 @@
+<package>
+  <description brief="cython_node">
+
+     cython_node
+
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/cython_node</url>
+  <depend package="cyton_driver"/>
+  <depend package="rospy"/>
+  <depend package="tf"/>
+  <depend package="kdl"/>
+  <depend package="sensor_msgs"/>
+
+</package>
+
+

@@ -1,0 +1,41 @@
+<launch>
+	<param name="/use_sim_time" value="true" />
+	<node pkg="stage_rep" type="stageros" name="stageros"
+		args="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" output="log">
+		<param name="base_watchdog_timeout" value="0.2" />
+		<remap from="base_scan" to="scan" />
+	</node>
+
+	<remap from="state_correction" to="odom" />
+
+	<node pkg="rtcus_trajectory_rollout_local_planner" name="navigation_node"
+		type="trajectory_rollout_move_base" output="screen">
+
+		<!-- navigation architecture config -->
+		<rosparam command="load"
+			file="$(find rtcus_navigation)/config/default_node_config.yaml" />
+
+		<rosparam command="load" ns="planner/local_planner"
+			file="$(find rtcus_trajectory_rollout_local_planner)/config/base_local_planner_params.yaml" />
+
+		<rosparam command="load" ns="perception_port"
+			file="$(find rtcus_navigation)/config/costmap_perception_port.yaml" />
+
+	</node>
+
+	<!-- arg name="profile_performance" value="valgrind minusminustool=callgrind" -->
+
+	<include file="$(find rtcus_navigation)/launch/performance_monitor.xml">
+		<arg name="navigation_node_name" value="navigation_node" />
+	</include>
+
+	<include file="$(find rtcus_dwa)/launch/action_and_state_monitor.xml" />
+	<node name="configuration_window" pkg="dynamic_reconfigure" type="reconfigure_gui" />
+
+	<param name="robot_description"
+		command="$(find xacro)/xacro.py '$(find erratic_description)/urdf/erratic_laser.urdf.xacro'" />
+
+	<node name="rviz" pkg="rviz" type="rviz" ouput="screen"
+		args="-d $(find rtcus_dwa)/tests/demo_config/rviz.vcg" />
+</launch>

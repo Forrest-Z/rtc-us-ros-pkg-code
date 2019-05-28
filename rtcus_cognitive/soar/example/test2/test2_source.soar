@@ -1,0 +1,17 @@
+source _firstload.soar
+pushd all
+source all_source.soar
+popd
+pushd elaborations
+source elaborations_source.soar
+popd
+source initialize-test2.soar
+source move.soar
+source move-E.soar
+source move-N.soar
+source move-NE.soar
+source move-NW.soar
+source move-S.soar
+source move-SE.soar
+source move-SW.soar
+source move-W.soar

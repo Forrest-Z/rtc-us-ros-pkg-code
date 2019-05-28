@@ -1,0 +1,119 @@
+Index: src/stageros.cpp
+===================================================================
+--- src/stageros.cpp	(revision 39760)
++++ src/stageros.cpp	(working copy)
+@@ -306,26 +306,32 @@
+ 		
+     if( s.ranges.size() )
+ 			{
+-      // Translate into ROS message format and publish
+-      this->laserMsgs[r].angle_min = -s.fov/2.0;
+-      this->laserMsgs[r].angle_max = +s.fov/2.0;
+-      this->laserMsgs[r].angle_increment = s.fov/(double)(s.sample_count-1);
+-      this->laserMsgs[r].range_min = s.range.min;
+-      this->laserMsgs[r].range_max = s.range.max;
+-      this->laserMsgs[r].ranges.resize(s.ranges.size());
+-      this->laserMsgs[r].intensities.resize(s.intensities.size());
+-			
+-      for(unsigned int i=0; i<s.ranges.size(); i++)
+-				{
+-					this->laserMsgs[r].ranges[i] = s.ranges[i];
+-					this->laserMsgs[r].intensities[i] = (uint8_t)s.intensities[i];
+-				}
+-			
+-      this->laserMsgs[r].header.frame_id = mapName("base_laser_link", r);
+-      this->laserMsgs[r].header.stamp = sim_time;
+-      this->laser_pubs_[r].publish(this->laserMsgs[r]);
+-			}
+ 
++      Stg::usec_t sensor_update_interval=lasermodels[r]->GetUpdateInterval();
++      ros::Time next_expected_update_time= laserMsgs[r].header.stamp+ros::Duration((double)sensor_update_interval/1e6);
++      if(sim_time>=next_expected_update_time)
++          {
++          // Translate into ROS message format and publish
++          this->laserMsgs[r].angle_min = -s.fov/2.0;
++          this->laserMsgs[r].angle_max = +s.fov/2.0;
++          this->laserMsgs[r].angle_increment = s.fov/(double)(s.sample_count-1);
++          this->laserMsgs[r].range_min = s.range.min;
++          this->laserMsgs[r].range_max = s.range.max;
++          this->laserMsgs[r].ranges.resize(s.ranges.size());
++          this->laserMsgs[r].intensities.resize(s.intensities.size());
++
++          for(unsigned int i=0; i<s.ranges.size(); i++)
++                                    {
++                                            this->laserMsgs[r].ranges[i] = s.ranges[i];
++                                            this->laserMsgs[r].intensities[i] = (uint8_t)s.intensities[i];
++                                    }
++
++          this->laserMsgs[r].header.frame_id = mapName("base_laser_link", r);
++          this->laserMsgs[r].header.stamp = sim_time;
++          this->laser_pubs_[r].publish(this->laserMsgs[r]);
++            }
++	}
++
+     // Also publish the base->base_laser_link Tx.  This could eventually move
+     // into being retrieved from the param server as a static Tx.
+     Stg::Pose lp = this->lasermodels[r]->GetPose();
+@@ -345,33 +351,38 @@
+                                           mapName("base_footprint", r),
+                                           mapName("base_link", r)));
+ 
+-    // Get latest odometry data
+-    // Translate into ROS message format and publish
+-    this->odomMsgs[r].pose.pose.position.x = this->positionmodels[r]->est_pose.x;
+-    this->odomMsgs[r].pose.pose.position.y = this->positionmodels[r]->est_pose.y;
+-    this->odomMsgs[r].pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->positionmodels[r]->est_pose.a);
+-    Stg::Velocity v = this->positionmodels[r]->GetVelocity();
+-    this->odomMsgs[r].twist.twist.linear.x = v.x;
+-    this->odomMsgs[r].twist.twist.linear.y = v.y;
+-    this->odomMsgs[r].twist.twist.angular.z = v.a;
++    Stg::usec_t odometry_update_interval=this->positionmodels[r]->GetUpdateInterval();
++    ros::Time next_expected_odometry_update_time= this->odomMsgs[r].header.stamp+ros::Duration((double)odometry_update_interval/1e6);
++    if(sim_time>=next_expected_odometry_update_time)
++    {
++        // Get latest odometry data
++        // Translate into ROS message format and publish
++        this->odomMsgs[r].pose.pose.position.x = this->positionmodels[r]->est_pose.x;
++        this->odomMsgs[r].pose.pose.position.y = this->positionmodels[r]->est_pose.y;
++        this->odomMsgs[r].pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->positionmodels[r]->est_pose.a);
++        Stg::Velocity v = this->positionmodels[r]->GetVelocity();
++        this->odomMsgs[r].twist.twist.linear.x = v.x;
++        this->odomMsgs[r].twist.twist.linear.y = v.y;
++        this->odomMsgs[r].twist.twist.angular.z = v.a;
+ 
+-    //@todo Publish stall on a separate topic when one becomes available
+-    //this->odomMsgs[r].stall = this->positionmodels[r]->Stall();
+-    //
+-    this->odomMsgs[r].header.frame_id = mapName("odom", r);
+-    this->odomMsgs[r].header.stamp = sim_time;
++        //@todo Publish stall on a separate topic when one becomes available
++        //this->odomMsgs[r].stall = this->positionmodels[r]->Stall();
++        //
++        this->odomMsgs[r].header.frame_id = mapName("odom", r);
++        this->odomMsgs[r].header.stamp = sim_time;
+ 
+-    this->odom_pubs_[r].publish(this->odomMsgs[r]);
++        this->odom_pubs_[r].publish(this->odomMsgs[r]);
+ 
+-    // broadcast odometry transform
+-    tf::Quaternion odomQ;
+-    tf::quaternionMsgToTF(odomMsgs[r].pose.pose.orientation, odomQ);
+-    tf::Transform txOdom(odomQ, 
+-                         tf::Point(odomMsgs[r].pose.pose.position.x,
+-                                   odomMsgs[r].pose.pose.position.y, 0.0));
+-    tf.sendTransform(tf::StampedTransform(txOdom, sim_time,
+-                                          mapName("odom", r),
+-                                          mapName("base_footprint", r)));
++        // broadcast odometry transform
++        tf::Quaternion odomQ;
++        tf::quaternionMsgToTF(odomMsgs[r].pose.pose.orientation, odomQ);
++        tf::Transform txOdom(odomQ,
++                             tf::Point(odomMsgs[r].pose.pose.position.x,
++                                       odomMsgs[r].pose.pose.position.y, 0.0));
++        tf.sendTransform(tf::StampedTransform(txOdom, sim_time,
++                                              mapName("odom", r),
++                                              mapName("base_footprint", r)));
++    }
+ 
+     // Also publish the ground truth pose and velocity
+     Stg::Pose gpose = this->positionmodels[r]->GetGlobalPose();

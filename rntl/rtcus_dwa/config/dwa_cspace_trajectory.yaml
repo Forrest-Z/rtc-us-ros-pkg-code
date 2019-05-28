@@ -1,0 +1,42 @@
+planner:
+   k_clearance: 10
+   k_heading: 1
+   k_velocity: 1
+   
+   heading_cost_strategy: face_goal_dwa_default #trajectory_goal_intersection
+   
+   high_clearance_dwa:
+       use_dynamic_clearance_importance_from_admisibility_danger: false
+       use_method_clearance_cost_dilation: true
+       use_method_non_admisibilty_repulsion: false
+       use_secure_speed_in_non_admisibility: true
+       use_non_admisibility_degree_as_clearance: true
+       
+   #SAFE DWA PARAMETERS
+   max_collision_distance: 12
+   obstacle_inflation: 0.2 # theoretically in safe dwa is not needed. But the stage simulator has some problems and makes the robot bigger it is.
+   security_area_clearance_weight: 0.8   
+   clearance_sigmoid_location: 0.5
+   clearance_sigmoid_scale: 0.2
+   
+   use_clearance_lookup_table: false
+   lookup_table:
+      use_computation_outside_obstacles: true
+      lookup_area_longitude: 30
+      resolution: 50
+      action_count: 80   
+   
+   ##----------------- TRAJECTORY ROLLOUT CONFIG
+   clearance_trajectory_generation: TrajectoryRolloutPolygonalShapeRobot
+   non_admisibility_repulsion_weight: 0.05
+   secure_velocity_saturation_admisibility_threshold: 0.6
+   security_area_obstacle_inflation: 0.5
+   v_res: 6
+   omega_res: 15
+   
+   trajectory_rollout_clearance:
+      trajectory_samples: 200 # 200 default
+      integration_period: 999999999 # regulated by maxdistance and trajectory_samples
+      strategy: 1
+   
+   

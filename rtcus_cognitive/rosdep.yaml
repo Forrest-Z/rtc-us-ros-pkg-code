@@ -1,0 +1,16 @@
+python-htmlgen:
+  ubuntu: python-htmlgen
+  debian: python-htmlgen
+  
+python-scipy:
+  ubuntu: python-scipy
+  debian: python-scipy
+
+python-mlpy:
+  ubuntu: python-mlpy
+  debian: python-mlpy
+
+swig:
+  ubuntu: swig
+  debian: swig
+

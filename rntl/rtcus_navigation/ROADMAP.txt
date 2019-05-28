@@ -1,0 +1,6 @@
+ Created on: Feb 19, 2013
+     Author: Pablo Iñigo Blasco
+     
+= RTCUS_NAVIGATION =
+- Refactorize to separate the concept of timing oracle from the default action port. 
+

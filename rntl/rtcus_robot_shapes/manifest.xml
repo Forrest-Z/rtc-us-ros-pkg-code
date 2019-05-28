@@ -1,0 +1,24 @@
+<package>
+	<description brief="rtcus_robot_shapes">
+
+		rtcus_robot_shapes
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_robot_shapes</url>
+
+	<export>
+		<cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp" lflags="-L${prefix}/lib" />
+		<!-- -->
+	</export>
+
+	<depend package="dynamic_reconfigure" />
+	<depend package="geometry_msgs" />
+	<depend package="rtcus_assert" />
+	<depend package="pcl" />
+
+</package>
+
+

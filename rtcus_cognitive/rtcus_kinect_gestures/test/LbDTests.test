@@ -1,0 +1,5 @@
+<launch>
+  <test test-name="DtwTest" pkg="rtcus_kinect_gestures" type="DtwTest.py" args="--text"/>
+  <test test-name="GestureEntryTest" pkg="rtcus_kinect_gestures" type="GestureEntryTest.py" args="--text" time-limit="120.0"/>
+  
+</launch>

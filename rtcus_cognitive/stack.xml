@@ -1,0 +1,10 @@
+<stack>
+  <description brief="rtcus_cognitive">rtcus_cognitive</description>
+  <author>Maintained by Pablo Iñigo Blasco</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rtcus_cognitive</url>
+  <depend stack="ros" />
+
+</stack>
+

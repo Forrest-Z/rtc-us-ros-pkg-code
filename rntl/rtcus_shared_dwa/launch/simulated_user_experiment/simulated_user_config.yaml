@@ -1,0 +1,37 @@
+planner_frequency: 10
+defer_start: false
+
+planner:
+   k_clearance: 1
+   k_heading: 2
+   k_velocity: 2
+   
+   v_res: 5
+   omega_res: 7
+
+   heading_cost_strategy: face_goal_dwa_default #trajectory_goal_intersection
+   #clearance strategy parameters
+   non_admisibility_repulsion_weight: 0.3
+   secure_velocity_saturation_admisibility_threshold: 1.0
+   security_area_obstacle_inflation: 0.3
+   max_collision_distance: 0.5
+
+   use_clearance_lookup_table: false
+   obstacle_inflation: 0.2 # theoretically in safe dwa is not needed. But the stage simulator has some problems and makes the robot biger it is.
+
+   #semi-obsolete paramameters
+   security_area_clearance_weight: 0.8   
+   clearance_sigmoid_location: 0.5
+   clearance_sigmoid_scale: 0.1
+
+   
+#THE SIMULATED USER THINKS THAT THE DYNAMIC RESPONSE OF THE SYSTEM IS INMEDIATE
+kinodynamic_model:
+   angular_speed_limit: 20 # rad/s  
+   linear_forward_speed_limit: 20 # m/s
+   
+   linear_acceleration_limit: 6000.0 #m/sec²
+   linear_brake_limit: 6000.0 #m/sec²
+   angular_acceleration_limit: 6000 #rad/sec²
+   
+

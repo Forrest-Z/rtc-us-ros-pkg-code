@@ -1,0 +1,171 @@
+# ================== GENERAL CONFIG =============================
+name "basic_dwa"
+
+#The resolution (in meters) of the underlying bitmap model. Larger values speed up raytracing at the expense of fidelity in collision detection and sensing. The default is often a reasonable choice.
+resolution 0.4
+
+#http://permalink.gmane.org/gmane.science.robotics.playerstage.user/546
+#http://playerstage.sourceforge.net/doc/stage-pre-3.0.0/group__world.html
+
+# size of the world in meters
+size [50 50]
+
+# simulation timestep in milliseconds
+interval_sim 5  
+
+#simulation speed
+speedup 0.8
+
+#speedup -1 # as fast as possible
+paused 0
+
+# set the resolution of the underlying raytrace model in meters
+resolution 0.02
+
+# update the screen every 10ms (we need fast update for the test demo)
+gui_interval 1000
+
+quit_time 0
+show_clock                1
+show_clock_interval		  1
+pose [ 0 0 0 0.0 ]
+
+window
+( 
+  show_data 0
+  show_footprints 1
+  #size of the window in pixels
+  size [ 524.000 440.000 ] 
+  center [ 0 0 ]
+  rotate [ 0.000 0.000 ]
+  scale 6.5 
+  
+  pcam_on 0
+  pcam_loc [ 0 -0.50 11.5 ]
+  pcam_angle [ 90 0 ]
+)
+
+
+# ============= MODEL DESCRIPTIONS ========================
+define block model
+(
+  size [0.5 0.5 0.5]
+  gui_nose 0
+)
+
+define topurg ranger
+(
+  #sensor velocity
+  #50 -> 20Hz
+  #1 -> 1KHz
+  
+  update_interval 10
+  
+  	sensor( 			
+    range [ 0.0  100.0 ]
+    #fov 270.25
+    fov 300.25
+    samples 40
+    #samples 40
+  )
+  
+  
+  # generic model properties
+  color "black"
+  size [ 0.05 0.05 0.1 ]  
+)
+
+define pr2 position
+(
+#enum  	ControlMode { CONTROL_ACCELERATION, CONTROL_VELOCITY, CONTROL_POSITION }
+#enum  	DriveMode { DRIVE_DIFFERENTIAL, DRIVE_OMNI, DRIVE_CAR }
+#enum  	LocalizationMode { LOCALIZATION_GPS, LOCALIZATION_ODOM }
+
+  drive "diff"
+  # only used if drive is set to "car"
+  #wheelbase 1.0
+  debug "true"
+  
+  #motorbike
+  size [1.5 0.8 0.4]
+  
+  #wheelchair
+  #size [0.5 0.5 0.25]
+  
+  origin [0 0 0 0]
+  gui_nose 1
+  
+  topurg(pose [ 0.0 0.000 0 0.000 ]) 
+  
+  velocity [ 0.0 0.0 0.0 0.0 ]
+  update_interval 1 #ms
+  
+  localization "gps"
+  #localization_origin [ <defaults to model's start pose> ]
+  
+  # odometry error model parameters, 
+  # only used if localization is set to "odom"
+  odom_error [0.00 0.00 0.00 0.00]
+  
+  velocity_bounds [-1000 1000 0 0 0 0 -9000 9000 ]	
+  # [ xmin xmax ymin ymax zmin zmax amin amax ]				  				
+  #acceleration_bounds [-2 4 -0.0 0 -1.0 1.0 -10 10]
+  acceleration_bounds [-40000 20000 -0.0 0 -1.0 1.0 -100000 100000]
+  
+  camera
+  (
+  	pose [ 0.0 0.000 1.0 0.000 ]
+    update_interval 50
+    # laser properties
+    resolution [ 220 200 ]
+    range [ 0.2 70.0 ]
+    fov [ 77.0 100.0 ]
+    pantilt [ 0.0 0.0 ]
+
+    # model properties
+    size [ 0.2 0.07 0.5 ]
+    color "black"
+    watts 100.0 # TODO find watts for sony pan-tilt camera
+  )
+)
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+# ======================= WORLD INSTANCIATION ====================
+
+# load an environment bitmap
+floorplan
+( 
+  name "willow"
+  bitmap "city.pgm"
+  #bitmap "corridors.pgm"
+  #original image size
+  #size [25.2 22.3 1.5]
+  size [66 61 1.5]
+  #size [38.4 32.6 1.5]
+  #size [19.2 16.3 1.5]]
+  #size [58.4 52.6 1.5]
+  #size [85.8 82.2 1.5]
+  #size [116.8 105.2 1.5]
+  
+  pose [ 0 0 0 0 ]
+)
+
+# throw in a robot
+pr2( pose [ 0 0 0 0 ] name "wheelchair" color "blue")
+#block( pose [ -0 5 0 0 ] color "red")

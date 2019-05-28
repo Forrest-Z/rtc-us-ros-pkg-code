@@ -1,0 +1,30 @@
+<package>
+  <description brief="delayed_topics">
+
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/delayed_topics</url>
+  
+  <export>
+    <cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include" lflags="-L${prefix}/lib"/>
+  </export>
+  
+  <depend package="rtcus_stamp"/>
+  <depend package="rtcus_motion_models"/>
+  <depend package="mrpt_libs"/>
+  <depend package="mrpt_bridge"/>
+  <depend package="dynamic_reconfigure"/>
+  <depend package="rtcus_nav_msgs"/>
+  
+  <depend package="rospy"/>
+  <depend package="sensor_msgs" />
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="tf"/>
+  <depend package="joy"/>
+  <depend package="rosgraph_msgs"/>
+  <depend package="std_srvs"/>
+  
+</package>

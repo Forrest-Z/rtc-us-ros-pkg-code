@@ -1,0 +1,10 @@
+<stack>
+  <description brief="rtcus_tools">This stack stores several tools related with ROS development.</description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rtcus_tools</url>
+  <depend stack="ros" />
+
+</stack>
+

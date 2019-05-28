@@ -1,0 +1,13 @@
+<launch>
+	<group ns="simulation_navigation_indicators">
+		<node name="stage_sim_prediction_error_ground_truth" pkg="rtcus_navigation"
+			type="ptc_prediction_error_monitor.py" output="screen">
+			<remap from="prediction_monitor/state_estimation_input" to="/navigation_node/state_estimation" />
+			<remap from="prediction_monitor/ground_truth_input" to="/base_pose_ground_truth" />
+		</node>
+	</group>
+	
+	<node name="prediction_error_plot" pkg="rxtools" type="rxplot"
+		args="--ymin=-2 --ymax=2 --buffer=5 --refresh_rate=10 --title='PTC ERRORS'  /prediction_quality/orientation_error/data,prediction_quality/angular_speed_error/data /prediction_quality/linear_speed_error/data,prediction_quality/distance_error/data  " />
+
+</launch>

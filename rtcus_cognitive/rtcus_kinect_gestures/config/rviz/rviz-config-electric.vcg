@@ -1,0 +1,76 @@
+Background\ ColorR=0,752941
+Background\ ColorG=0,752941
+Background\ ColorB=0,752941
+Fixed\ Frame=/openni_rgb_optical_frame
+Target\ Frame=/neck_1
+Grid.Alpha=0,5
+Grid.Cell\ Size=1
+Grid.ColorR=0,5
+Grid.ColorG=0,5
+Grid.ColorB=0,5
+Grid.Enabled=0
+Grid.Line\ Style=0
+Grid.Line\ Width=0,03
+Grid.Normal\ Cell\ Count=0
+Grid.OffsetX=0
+Grid.OffsetY=0
+Grid.OffsetZ=0
+Grid.Plane=0
+Grid.Plane\ Cell\ Count=11
+Grid.Reference\ Frame=<Fixed Frame>
+Image.Enabled=1
+Image.Image\ Topic=/camera/rgb/image_color
+Image.Transport\ Hint=raw
+Markers.=1
+Markers.Enabled=1
+Markers.Marker\ Topic=visualization_marker
+TF.All\ Enabled=1
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Marker\ Scale=1
+TF.Show\ Arrows=0
+TF.Show\ Axes=1
+TF.Show\ Names=0
+TF.Update\ Interval=0
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::FixedOrientationOrthoViewController
+Camera\ Config=225.376 -0.284938 8.48528 0.0374261 -0.503933 -0.496035 -0.496035 0.503933
+Property\ Grid\ State=selection=Target Frame;expanded=.Global Options,Grid.Enabled.Grid.StatusTopStatus,TF.Enabled,TF./openni_camera/openni_camera,TF./openni_depth_frame/openni_depth_frame,TF./openni_depth_optical_frame/openni_depth_optical_frame,TF./openni_rgb_frame/openni_rgb_frame,TF./openni_rgb_optical_frame/openni_rgb_optical_frame,TF./left_foot_1/left_foot_1,TF./left_hip_1/left_hip_1,TF./left_knee_1/left_knee_1,TF./right_foot_1/right_foot_1,TF./right_hand_1/right_hand_1,TF./right_hip_1/right_hip_1,TF./right_knee_1/right_knee_1,TF./head_1/head_1,TF./left_elbow_1/left_elbow_1,TF./left_hand_1/left_hand_1,TF./left_shoulder_1/left_shoulder_1,TF./neck_1/neck_1,TF./right_elbow_1/right_elbow_1,TF./right_shoulder_1/right_shoulder_1,TF./torso_1/torso_1,TF.Enabled.TF.Tree,TF./openni_cameraTree/openni_camera,TF./openni_depth_frameTree/openni_depth_frame,TF./openni_depth_optical_frameTree/openni_depth_optical_frame,TF./left_foot_1Tree/left_foot_1,TF./left_hip_1Tree/left_hip_1,TF./left_knee_1Tree/left_knee_1,TF./right_foot_1Tree/right_foot_1,TF./right_hand_1Tree/right_hand_1,TF./right_hip_1Tree/right_hip_1,TF./right_knee_1Tree/right_knee_1,TF./head_1Tree/head_1,TF./left_elbow_1Tree/left_elbow_1,TF./left_hand_1Tree/left_hand_1,TF./left_shoulder_1Tree/left_shoulder_1,TF./neck_1Tree/neck_1,TF./right_elbow_1Tree/right_elbow_1,TF./right_shoulder_1Tree/right_shoulder_1,TF./torso_1Tree/torso_1,TF./openni_rgb_frameTree/openni_rgb_frame,TF./openni_rgb_optical_frameTree/openni_rgb_optical_frame,Markers.Enabled,Markers.Enabled.Markers.Namespaces;scrollpos=0,15;splitterpos=247,483;ispageselected=1
+[Display0]
+Name=Grid
+Package=rviz
+ClassName=rviz::GridDisplay
+[Display1]
+Name=TF
+Package=rviz
+ClassName=rviz::TFDisplay
+[Display2]
+Name=Image
+Package=rviz
+ClassName=rviz::ImageDisplay
+[Display3]
+Name=Markers
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[TF.]
+head_1Enabled=1
+left_elbow_1Enabled=1
+left_foot_1Enabled=1
+left_hand_1Enabled=1
+left_hip_1Enabled=1
+left_knee_1Enabled=1
+left_shoulder_1Enabled=1
+neck_1Enabled=1
+openni_cameraEnabled=1
+openni_depth_frameEnabled=1
+openni_depth_optical_frameEnabled=1
+openni_rgb_frameEnabled=1
+openni_rgb_optical_frameEnabled=1
+right_elbow_1Enabled=1
+right_foot_1Enabled=1
+right_hand_1Enabled=1
+right_hip_1Enabled=1
+right_knee_1Enabled=1
+right_shoulder_1Enabled=1
+torso_1Enabled=1

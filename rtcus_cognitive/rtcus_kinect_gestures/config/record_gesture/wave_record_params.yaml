@@ -1,0 +1,18 @@
+name: wave
+frames: [ {fixed: /neck_1, target: /right_elbow_1,position: "xyz", orientation: "y"}, {fixed: /neck_1, target: /left_hand_1, position: "xyz", rotation: "y"}]
+
+num_demonstrations: 1
+# time of recording per demonstration, in seconds
+time_per_demonstration: 10
+sampling_frequency: 50
+
+# waiting time between demonstrations, in seconds
+wait_seconds: 1
+seconds_to_start_recording: 0
+
+#OPTIONAL PARAMETERS
+markers:
+# Show markers of the gesture in real time with rviz?
+  markers_plot: True
+  markers_max: 100
+  markers_size: 0.01

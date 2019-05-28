@@ -1,0 +1,17 @@
+<launch>
+	<include file="$(find rtcus_erratic_slam)/launch/distributed_node_architecture.xml"/>
+	<include file="$(find rtcus_erratic_slam)/launch/erratic_hardware.xml"/>
+	
+	<include file="$(find rtcus_erratic_slam)/launch/navigation.xml"/>
+	<include file="$(find rtcus_erratic_slam)/launch/slam_without_exploring.xml"/>
+	<include file="$(find rtcus_erratic_slam)/launch/monitor_erratic_state.xml"/>
+	<include file="$(find rtcus_erratic_slam)/launch/voice.xml"/>
+
+	
+   <node respawn="true" pkg="joy" type="joy" name="station_joystick" >
+    	<param name="dev" type="string" value="/dev/input/js0" />
+    	<param name="deadzone" value="0.12" />
+  	</node>
+  
+ </launch>
+  

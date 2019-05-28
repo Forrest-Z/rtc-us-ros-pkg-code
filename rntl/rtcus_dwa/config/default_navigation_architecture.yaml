@@ -1,0 +1,49 @@
+planner_frequency: 50
+reference_frame: /odom
+base_link_frame: /base_link
+prediction_base_link_frame: /base_link_prediction
+defer_start: false #it is usually overwriten by the launcher
+
+action_port:
+   output_type: StampedTwist2D #Twist
+   #if maintain this to 0, make sure that the old messages are not discarded or the robot may stay suck
+   application_time_oracle: 0.0 #Time delay oracle
+   enable_stamped_commands: False
+   output_topic_name: cmd_vel
+  
+# ==== Dynamic State Estimation Modules available =======
+# rtcus_navigation/non_time_DynamicState2D_Twist2D
+# rtcus_navigation/default_nonholonomic_DynamicState2D_Twist2D
+# rtcus_navigation/rtcus_navigation/nonholonomic_trajectory_rollout2d
+state_estimation_type: rtcus_navigation/nonholonomic_trajectory_rollout2d
+
+perception_port:
+   #input_type: sensor_msgs/PointCloud2
+   input_type: sensor_msgs/LaserScan
+   base_link_frame: /base_link
+   #we assume that the laser is just in the base of the robot (not too much precisse)
+   sensor_link_frame: /base_laser_link
+
+   artificial_obstacles:
+      enabled: true
+      publish_obstacle_decoration_info: true
+      artificial_obstacle_fillup_distance: 0.5 # 0.3meters
+      artificial_obstacle_fillup_distance_max: 20.0
+      distance_cutoff: 0.05 #meters.
+      close_back: true
+
+goal_port:
+   latched_goal_estimation: true
+   #input_type: nav_msgs/Path 
+   input_type: geometry_msgs/PoseStamped
+ 
+goal_reach_detection:
+   acceptance_radious: 1.0
+   reach_latch: false
+
+factory:
+   use_high_noise_state_port: true
+
+state_port:
+   high_noise_filter: 
+      time_buffer: 0.0 # secs

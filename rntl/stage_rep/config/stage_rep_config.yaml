@@ -1,0 +1,12 @@
+base_watchdog_timeout: 0.5
+discard_old_commands: false
+
+robot_properties:
+   sample_count: 100
+   actuation_noise_alpha_0: 0.0
+   actuation_noise_alpha_1: 0.0
+   actuation_noise_alpha_2: 0.0
+   actuation_noise_alpha_3: 0.0
+   actuation_noise_alpha_4: 0.0
+   actuation_noise_alpha_5: 0.0
+

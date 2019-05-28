@@ -1,0 +1,7 @@
+#ERRATIC SPECS: http://www.umiacs.umd.edu/~cteo/umd-erratic-ros-data/man_era_rev_h.pdf
+linear_forward_speed_limit: 2.0 #m/sec #according to the documentation 
+linear_acceleration_limit: 2.0 #m/sec²
+
+linear_brake_limit: 3.0 #m/sec²
+angular_speed_limit: 3.2 #rad/sec according the doc it is 200 deg/sec
+angular_acceleration_limit: 11 #rad/sec² according to the documentation 720 deg/sec... but by default set to 400 deg/sec	

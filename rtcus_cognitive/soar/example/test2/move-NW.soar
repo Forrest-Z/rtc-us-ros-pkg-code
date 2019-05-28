@@ -1,0 +1,17 @@
+sp {test2*propose*move-NW
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir south-east)
+   (<sout> ^sonarNo7 <sonar7>
+           ^sonarNo0 { <sonar0> <= <sonar7> }
+           ^sonarNo1 { <sonar1> <= <sonar7> }
+           ^sonarNo2 { <sonar2> <= <sonar7> }
+           ^sonarNo3 { <sonar3> <= <sonar7> }
+           ^sonarNo4 { <sonar4> <= <sonar7> }
+           ^sonarNo5 { <sonar5> <= <sonar7> }
+           ^sonarNo6 { <sonar6> <= <sonar7> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction north-west)
+}

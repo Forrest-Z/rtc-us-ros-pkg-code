@@ -1,0 +1,9 @@
+planner:
+   k_clearance: 40
+   k_heading: 6
+   k_velocity: 2
+   security_area_obstacle_inflation: 2.45
+   security_area_clearance_weight: 0.2
+   clearance_sigmoid_location: 0.5
+   clearance_sigmoid_scale: 0.1
+   

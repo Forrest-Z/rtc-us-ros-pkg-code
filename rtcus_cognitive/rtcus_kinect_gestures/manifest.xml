@@ -1,0 +1,30 @@
+<package>
+  <description brief="rtcus_kinect_gestures">
+
+     Gestures interpreter using Microsoft's Kinect. Basic implementations of the DTW, HMM and GMM methods are provided.
+     Gesture signal accomodation implemented.
+
+  </description>
+  <author>Pablo Iñigo Blasco and Tomás Murillo Morales</author>
+  <license>BSD</license>
+  
+  <review status="unreviewed" notes="This package is still in development"/>
+  
+  <url>http://ros.org/wiki/rtcus_kinect_gestures</url>
+  <rosdep name="mlpy"/>
+  <rosdep name="htmlgen"/>
+  
+  <depend package="ghmm"/>
+  <depend package="tf"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="roslib"/>
+  <depend package="visualization_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="kdl"/>
+  <depend package="rostest"/>
+  <depend package="rosunit"/>
+
+</package>
+
+

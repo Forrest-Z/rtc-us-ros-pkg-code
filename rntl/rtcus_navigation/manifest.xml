@@ -1,0 +1,47 @@
+<package>
+	<description brief="rtcus_navigation">
+The Robot Navigation Template Library (RNTL) is a generic and modular software framework to build navigation methods for autonomous and semi-autonomous mobile robots.
+It is built on c++ and uses intensively c++ templates.
+The main principle of this library is the intensive use of existing and widespread libraries like pcl, mrpt, ros::navigation, etc. Making them the most compatible as possible and avoiding the most the data copy.
+This library is focused in obstacle advoidance and motion control but neither localization nor mapping. To do this it is better to use other libraries like ros::navigation, mrpt, gmapping, karto, etc.
+
+	</description>
+	<author>Pablo Inigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_navigation</url>
+
+	<export>
+		<cpp
+			cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include"
+			lflags="-L${prefix}/lib" />
+		<rtcus_navigation plugin="${prefix}/plugins.xml" />
+		<rosdoc config="rosdoc.yaml" />
+	</export>
+
+	<depend package="roscpp" />
+	<depend package="pluginlib" />
+	<depend package="std_srvs" />
+	<depend package="rtcus_assert" />
+	<depend package="rtcus_conversions" />
+	<depend package="rtcus_compositions" />
+
+	<depend package="rtcus_stamp" />
+	<depend package="rtcus_motion_models" />
+	<depend package="rtcus_nav_msgs" />
+	<depend package="rtcus_kinodynamic_description" />
+	<depend package="rtcus_robot_shapes" />
+
+	<depend package="nav_msgs" />
+	<depend package="sensor_msgs" />
+	<depend package="geometry_msgs" />
+	<depend package="costmap_2d" />
+
+	<depend package="laser_geometry" />
+	<depend package="tf" />
+	<depend package="bullet" />
+	<depend package="pcl_ros" />
+	<depend package="pcl" />
+	<depend package="mrpt_bridge" />
+
+</package>

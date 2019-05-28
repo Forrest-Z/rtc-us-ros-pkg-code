@@ -1,0 +1,23 @@
+<launch>
+	<param name="cyton_description" command="cat $(find cytonRobotDescription)/models/cyton.urdf"/>
+	
+	<node pkg="robot_state_publisher" type="state_publisher" name="cyton_state_publisher" >
+	    <param name="publish_frequency" type="double" value="50.0" />
+    	<param name="tf_prefix" type="string" value="" />
+    	<param name="joint_states" value="/joint_states"/>
+    	
+    	<remap from="robot_description" to="cyton_description"/>
+    </node>
+    
+    <node pkg="robotArmJointAnimation" type="minolo" name="jointPublisher">
+    	<remap from="cmd_joints" to="/joint_states"/>
+    </node>
+
+    <include file="$(find gazebo_worlds)/launch/empty_world.launch"/>
+     
+    <node pkg="gazebo" type="spawn_model" name="insert_cyton_model" args="-param /cyton_description -urdf -model cyton_robot_model" respawn="false">
+    </node>
+    
+    <node pkg="rviz" type="rviz" name="rviz"/>
+        
+</launch>

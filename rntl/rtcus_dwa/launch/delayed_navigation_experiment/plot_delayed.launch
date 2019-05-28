@@ -1,0 +1,3 @@
+<launch>
+<node name="plotdelayed" pkg="rxtools" type="rxplot" args="/cmd_vel/twist/linear,/odom/twist/twist/linear/x,/navigation_node/state_estimation/state/twist/linear /cmd_vel/twist/angular,/odom/twist/twist/angular/z,/navigation_node/state_estimation/state/twist/angular"/>
+</launch>

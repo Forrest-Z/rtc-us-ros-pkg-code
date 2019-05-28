@@ -1,0 +1,10 @@
+<launch>
+	<group ns="simulation_navigation_indicators">
+		<node name="stage_trajectory_smoothness_monitor" pkg="rtcus_navigation"
+			type="trajectory_smoothness_monitor.py" output="screen">
+			<remap from="odom" to="odom" />
+		</node>
+	</group>
+		
+	<node name="prediction_error_plot" pkg="rxtools" type="rxplot" args="--ymin=-2 --ymax=2 --buffer=5 --refresh_rate=10 --title='Smoothness' /simulation_navigation_indicators/delta_kurvature/data" />
+</launch>

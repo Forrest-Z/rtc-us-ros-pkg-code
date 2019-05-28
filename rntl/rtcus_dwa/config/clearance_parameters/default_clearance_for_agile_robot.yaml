@@ -1,0 +1,7 @@
+planner:
+   k_clearance: 1
+   k_heading: 1
+   k_velocity: 1
+   clearance_sigmoid_location: 0.5
+   clearance_sigmoid_scale: 0.1
+   

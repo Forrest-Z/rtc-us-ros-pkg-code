@@ -1,0 +1,10 @@
+<launch>
+	<include file="$(find rtcus_shared_dwa)/launch/shared_dwa_demo.launch">
+		<arg name="specific_config"
+			value="$(find rtcus_shared_dwa)/config/clearance_parameters/shared_control_wheelchair.yaml" />
+		<arg name="kinodynamic_model"
+			value="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/wheelchair.yaml" />
+		<arg name="robot_shape"
+			value="$(find rtcus_robot_shapes)/config/wheelchair.yaml" />
+	</include>
+</launch>

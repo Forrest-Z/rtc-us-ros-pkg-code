@@ -1,0 +1,33 @@
+# ==== Dynamic State Estimation Modules available =======
+# rtcus_navigation/non_time_DynamicState2D_Twist2D
+# rtcus_navigation/default_nonholonomic_DynamicState2D_Twist2D
+# rtcus_navigation/nonholonomic_trajectory_rollout2d
+
+state_estimation_type: rtcus_navigation/nonholonomic_trajectory_rollout2d
+
+state_estimation:
+    max_state_history_size_in_seconds: 2 #secs 
+    max_action_buffer_size_in_seconds: 20 # secs 
+
+planner_frequency: 50.0
+global_frame: /odom
+base_link_frame: /base_link
+prediction_base_link_frame: /base_link_prediction
+defer_start: false
+
+action_port:
+   output_type: StampedTwist2D #Twist
+   application_time_oracle: 0.0
+   enable_stamped_commands: False
+   output_topic_name: cmd_vel
+
+perception_port:
+   base_link_frame: /base_link
+   base_laser_link: /base_laser_link
+
+goal_port:
+   latched_goal_estimation: true
+   
+goal_reach_detection:
+   acceptance_radious: 0.5
+   reach_latch: false

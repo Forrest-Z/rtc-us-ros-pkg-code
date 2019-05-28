@@ -1,0 +1,13 @@
+sp {propose*hola-mundo
+   (state <s> ^type state)
+-->
+   (<s> ^operator <o> +) # El "+" indica que es una preferencia aceptable
+   (<o> ^name hola-mundo)}
+
+sp {apply*hola-mundo
+   (state <s> ^operator <o>
+              ^io.output-link <out>)
+   (<o> ^name hola-mundo) # Comprueba que el operador seleccionado se llame hola-mundo
+-->
+   (<out> ^comando <cmd>)
+   (<cmd> ^mensaje hola-mundo)}

@@ -1,0 +1,10 @@
+<launch>
+
+	<node name="configuration_window" pkg="dynamic_reconfigure" type="reconfigure_gui" />
+
+	<node name="rviz" pkg="rviz" type="rviz"
+		args="-d $(find delayed_teleop)/config/rviz-config-delay-monitor.vcg" />
+		
+	<node name="rxconsole" pkg="rxtools" type="rxconsole"/>
+
+</launch>

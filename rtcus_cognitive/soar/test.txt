@@ -1,0 +1,4 @@
+[  0%] Built target rospack_genmsg_libexe
+[  0%] Built target rosbuild_precompile
+Linking CXX executable bin/basic_soar_test
+

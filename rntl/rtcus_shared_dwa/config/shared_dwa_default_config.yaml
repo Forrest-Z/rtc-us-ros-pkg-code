@@ -1,0 +1,53 @@
+planner_frequency: 35
+
+planner:
+   k_clearance: 1
+   k_heading: 1
+   k_velocity: 1
+
+   v_res: 12
+   omega_res: 20
+   
+   high_clearance_dwa:
+      use_dynamic_clearance_importance_from_admisibility_danger: false #default false
+      use_distance_as_clerarance: false
+      use_method_clearance_cost_dilation: true
+      use_method_non_admisibilty_repulsion: true
+      use_secure_speed_in_non_admisibility: true
+
+   #SAFE DWA parameters
+   non_admisibility_repulsion_weight: 0.5
+   security_area_obstacle_inflation: 0.5
+   security_area_clearance_weight: 0.8
+   secure_velocity_saturation_admisibility_threshold: 0.75
+
+   #Others clearance cost parameters
+   max_collision_distance: 20.0
+   obstacle_inflation: 0.1 # theoretically in safe dwa is not needed. But the stage simulator has some dproblems and makes the robot biger it is.   
+   use_clearance_lookup_table: false
+   #semi-obsolete paramameters
+   clearance_sigmoid_location: 0.5
+   clearance_sigmoid_scale: 0.1
+
+   shared_dwa:
+      shared_control_command_normalized: true # (obsolete to remove)defines if the goal action is normalized
+      k_shared_maintain_kuvature: 0.5 #kurvature vs speed preference in the kurvature strategy
+
+perception_port:
+   #input_type: sensor_msgs/PointCloud2
+   input_type: sensor_msgs/LaserScan
+   base_link_frame: /base_link
+   #we assume that the laser is just in the base of the robot (not too much precisse)
+   sensor_link_frame: /base_laser_link
+
+   artificial_obstacles:
+      enabled: true
+      publish_obstacle_decoration_info: true
+      artificial_obstacle_fillup_distance: 0.5 # 0.3meters
+      artificial_obstacle_fillup_distance_max: 20.0
+      distance_cutoff: 0.05 #meters.
+      close_back: true
+
+
+   
+   

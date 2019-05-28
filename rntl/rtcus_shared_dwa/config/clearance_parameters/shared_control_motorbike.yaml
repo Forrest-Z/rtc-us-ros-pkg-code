@@ -1,0 +1,51 @@
+frequency: 35.0
+   
+state_estimation_type: rtcus_navigation/default_nonholonomic_DynamicState2D_Twist2D
+
+goal_port:
+   mapping_rule: angular
+   angular_mapping: 
+      forward_bias: 0.05
+
+perception_port:
+   #input_type: sensor_msgs/PointCloud2
+   input_type: sensor_msgs/LaserScan
+   base_link_frame: /base_link
+   #we assume that the laser is just in the base of the robot (not too much precisse)
+   sensor_link_frame: /base_laser_link
+
+   artificial_obstacles:
+      enabled: true
+      publish_obstacle_decoration_info: true
+      artificial_obstacle_fillup_distance: 0.5 # 0.3meters
+      artificial_obstacle_fillup_distance_max: 20.0
+      distance_cutoff: 0.05 #meters.
+      close_back: true
+
+planner:
+   k_clearance: 1.0
+   k_heading: 4.0
+   k_velocity: 4.0
+   omega_res: 26
+   v_res: 9
+   
+   max_collision_distance: 50.0
+   non_admisibility_repulsion_weight: 0.1
+   secure_velocity_saturation_admisibility_threshold: 0.75
+   security_area_obstacle_inflation: 0.1
+   obstacle_inflation: 0.05
+   
+   #slow non-admisiblity repulsions, since k_heading is low regarding k_velocity to avoid oscillations in corridors
+   high_clearance_dwa:
+       #these are the classic approaches
+       use_method_clearance_cost_dilation: true
+       use_method_non_admisibilty_repulsion: false
+       use_secure_speed_in_non_admisibility: true
+       
+       #these are the newer and more powerful approaches
+       use_non_admisibility_degree_as_clearance: false
+       use_distance_as_clerarance: false
+       use_dynamic_clearance_importance_from_admisibility_danger: true
+       use_method_heading_admisibility: true
+       
+

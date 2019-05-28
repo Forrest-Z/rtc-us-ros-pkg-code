@@ -1,0 +1,22 @@
+<launch>
+	<arg name="remove_rviz_goal" default="false" />
+	<!-- INTROSPECTION -->
+	<include file="$(find rtcus_dwa)/launch/action_and_state_monitor.xml" />
+
+	<include file="$(find rtcus_navigation)/launch/performance_monitor.xml">
+		<arg name="navigation_node_name" value="navigation_node" />
+		<!-- <arg name="extra_plot" value="/navigation_node/perception_port/artificial_obstacles/cloud/width"/> -->
+	</include>
+
+	<node name="dynamic_reconfigure_gui" pkg="dynamic_reconfigure"
+		type="reconfigure_gui" />
+
+	<node name="rviz" pkg="rviz" type="rviz"
+		args="-d $(find rtcus_dwa)/tests/demo_config/rviz.vcg">
+		<remap from="goal" to="rviz_goal" if="$(arg remove_rviz_goal)" />
+	</node>
+
+	<param name="robot_description"
+		command="$(find xacro)/xacro.py '$(find erratic_description)/urdf/erratic_laser.urdf.xacro'" />
+
+</launch>

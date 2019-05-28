@@ -1,0 +1,81 @@
+<launch>
+	<arg name="planner_type" default="dwa_demo_test" />
+	<arg name="navigation_node_pkg" default="rtcus_dwa" />
+	<arg name="simulation" default="true" />
+
+	<arg name="profiler" default="false" />
+	<arg name="output" default="log" />
+	<arg name="defer_start" default="false" />
+	<arg name="full_performance" default="false" />
+	<arg name="remove_rviz_goal" default="false" />
+
+	<!-- =================== VEHICLE AND ARCHITECTURE CONFIG ========================== -->
+	<arg name="robot_shape" default="$(find rtcus_robot_shapes)/config/motorbike_shape.yaml" />
+
+	<arg name="default_config" default="$(find rtcus_dwa)/config/dwa_default_config.yaml" />
+
+	<arg name="specific_config"
+		default="$(find rtcus_dwa)/config/clearance_parameters/default_clearance_motorbike.yaml" />
+
+	<arg name="kinodynamic_model"
+		default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/motorbike_kynodynamic.yaml" />
+	<!-- ======================================================================== -->
+	<arg name="custom_state_estimation_motion_model" default="false" />
+	<arg name="custom_state_estimation_motion_model_config" default="$(arg kinodynamic_model)" />
+	
+	<!-- ====================== SIMULATION CONFIG ================================== -->
+	<arg name="simulation_configuration" default="$(find rtcus_dwa)/config/simulation_configuration.yaml"
+		if="$(arg simulation)" />
+
+	<arg name="simulated_vehicle_kinodynamics" default="$(arg kinodynamic_model )"
+		if="$(arg simulation)" />
+		
+	<!-- ========================================================================= -->
+	<!-- SIMULATOR STAGE -->
+	<param name="/use_sim_time" value="true" if="$(arg simulation)" />
+	<group if="$(arg simulation)">
+		<remap from="base_scan" to="scan" />
+		<include file="$(find stage_rep)/launch/stage_rep_node.launch">
+			<arg name="output" value="log" />
+			<arg name="world_file"
+				value="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" />
+			<arg name="robot_shape" value="$(arg robot_shape)" />
+			<arg name="simulation_configuration" value="$(arg simulation_configuration)" />
+			<arg name="simulated_vehicle_kinodynamics" value="$(arg simulated_vehicle_kinodynamics)" />
+		</include>
+	</group>
+
+	<!-- ========================================================================= -->
+	<!-- NAVIGATION NODE -->
+	<group>
+		<group if="$(arg custom_state_estimation_motion_model)" ns="/navigation_node/state_estimation">
+			<rosparam ns="kinodynamic_model" command="load"
+				file="$(arg custom_state_estimation_motion_model_config)" />
+			<param name="trajectory_rollout_estimation/use_custom_kinodynamics"
+				value="true" />
+		</group>
+
+		<remap from="state_correction" to="odom" />
+		<remap from="cmd_vel" to="cmd_vel_stamped" />
+		<include file="$(find rtcus_dwa)/launch/dwa_node_default_config.xml">
+			<arg name="navigation_node_name" value="navigation_node" />
+			<arg name="navigation_node_pkg" value="$(arg navigation_node_pkg)" />
+			<arg name="planner_type" value="$(arg planner_type)" />
+			<arg name="output" value="$(arg output)" />
+			<arg name="robot_shape" value="$(arg robot_shape)" />
+			<arg name="kinodynamic_model" value="$(arg kinodynamic_model)" />
+			<arg name="prefix" value="valgrind --tool=callgrind" if="$(arg profiler)" />
+			<arg name="default_config" value="$(arg default_config)" />
+			<arg name="specific_config" value="$(arg specific_config)" />
+			<param name="defer_start" value="$(arg defer_start)" />
+		</include>
+	</group>
+
+
+	<!-- ========================================================================= -->
+	<!-- INTROSPECTION -->
+	<include file="$(find rtcus_dwa)/launch/introspection.launch"
+		unless="$(arg full_performance)" />
+
+</launch>

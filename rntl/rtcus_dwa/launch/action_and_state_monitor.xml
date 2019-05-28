@@ -1,0 +1,22 @@
+<launch>
+	<arg name="navigation_node_name" default="navigation_node" />
+	<!-- <node pkg="rxtools" type="rxplot" name="plotting_data" args="mmymin=0 
+		mmbuffer=5 mmtitle='Comparing real speed vs action speed' /odom/twist/twist/linear/x,/cmd_vel_stamped/twist/linear 
+		/base_pose_ground_truth/twist/twist/angular/z,/odom/twist/twist/angular/z,/cmd_vel_stamped/twist/angular" 
+		/> -->
+
+<node pkg="rxtools" type="rxplot" name="plotting_velocities_odom_2"
+		args="--ymin=0 --buffer=5 --title='raw odom'  /odom/twist/twist/linear/x,/cmd_vel/linear/x ,/odom/twist/twist/angular/z,/cmd_vel/angular/z" />
+		
+	<node pkg="rxtools" type="rxplot" name="plotting_velocities_odom"
+		args="--ymin=0 --buffer=5 --title='Comparing real speed vs action speed'  $(arg navigation_node_name)/state_estimation/state/twist/linear,/odom/twist/twist/linear/x,/cmd_vel/linear/x,$(arg navigation_node_name)/state_port/procesed_state_reading/state/twist/linear  $(arg navigation_node_name)/state_estimation/state/twist/angular,/odom/twist/twist/angular/z,/cmd_vel/angular/z,$(arg navigation_node_name)/state_port/procesed_state_reading/state/twist/angular" />
+
+	<node pkg="rxtools" type="rxplot" name="plotting_velocities"
+		args="--ymin=0 --buffer=5 --title='Comparing real speed vs action speed'  $(arg navigation_node_name)/state_estimation/state/twist/linear,/odom/twist/twist/linear/x,/cmd_vel/linear/x  $(arg navigation_node_name)/state_estimation/state/twist/angular,/odom/twist/twist/angular/z,/cmd_vel/angular/z" />
+
+	<node pkg="rxtools" type="rxplot" name="plotting_stamped_velocities_2"
+		args="mmymin=0 mmbuffer=5 mmtitle='Comparing real speed vs action speed' $(arg navigation_node_name)/state_estimation/state/twist/angular,/odom/twist/twist/angular/z,/cmd_vel/twist/angular" />
+
+	<node pkg="rxtools" type="rxplot" name="plotting_stamped_velocities"
+		args="--ymin=0 --buffer=3 --refresh_rate=10 --title='Comparing real speed vs action speed (STAMPED)'  $(arg navigation_node_name)/state_estimation/state/twist/linear,/odom/twist/twist/linear/x,/cmd_vel_stamped/twist/linear,  $(arg navigation_node_name)/state_estimation/state/twist/angular,/odom/twist/twist/angular/z,/cmd_vel_stamped/twist/angular" />
+</launch>

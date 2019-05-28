@@ -1,0 +1,27 @@
+<launch>
+ 	<arg name="use_bag"/>
+ 	<arg name="bag_file" default="$(find rtcus_kinect_gestures)/data/bags/wave/saludo_alto_respecto_cuello_2011-09-30-13-21-51.bag"/>
+	<env name="LD_LIBRARY_PATH" value="/opt/ros/diamondback/stacks/visualization_common/ogre/build/ogre_src_v1-7-1/build/lib/" />
+
+	<group if="$(arg use_bag)">
+		<node pkg="rosbag" type="rosbag" name="recorded_gesture" args="play $(arg bag_file)" respawn="true">
+			<remap from="tf" to="tf_input"></remap>
+			<remap from="/camera/rgb/image_raw" to="image_input"></remap>
+			<remap from="scene_cloud" to="scene_cloud_input"></remap>
+		</node>
+		<param name="use_sim_time" value="false"/>
+		<node pkg="rtcus_kinect_gestures" type="Mock_tf_rosbag.py" name="time_restamper"></node>	
+	</group>
+	<group unless="$(arg use_bag)">
+		<include  file="$(find openni_camera)/launch/openni_node.launch"/>
+		<node pkg="openni_tracker" type="openni_tracker" name="openni_tracker"/>
+		<include file="$(find FilterKinectData)/launch/kinect_filtered.launch"/>
+	</group>
+	
+	<node pkg="rviz" type="rviz" name="rviz" args="--display-config $(find rtcus_kinect_gestures)/config/rviz/record_gesture_atc.vcg"/>
+	<node pkg="rxtools" name="rxconsole" type="rxconsole"/>
+	
+	<rosparam file="$(find rtcus_kinect_gestures)/config/record_gesture/gesture_params.yaml" command="load" />
+	<param name="output_directory" value="$(find rtcus_kinect_gestures)/data"></param>
+
+</launch>

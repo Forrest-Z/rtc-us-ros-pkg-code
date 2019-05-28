@@ -1,0 +1,27 @@
+<package>
+	<description brief="rtcus_assert">
+
+The rtcus_assert package provides a cpp library that allows make assertions (RTCUS_ASSERT and RTCUS_ASSERT_MSG) allowing easy string formating, printing the assertion fail through the rosout system and printing the current stack trace for debuging proposes. Also prints the stack trace on segmentation faults signals.
+
+		If stack trace is not shown in the console do this: Make sure that the operative system permissions to do this is
+		activated. In Ubuntu you can set on the permissions temporally using
+		the command:
+		echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_assert</url>
+	<depend package="roscpp" />
+
+	<export>
+		<cpp
+			cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include"
+			lflags="-L${prefix}/lib -lrtcus_assert" />
+	</export>
+
+
+</package>
+
+

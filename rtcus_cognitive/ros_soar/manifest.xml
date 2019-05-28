@@ -1,0 +1,16 @@
+<package>
+  <description brief="ros_soar">
+	Self controlling of an Erratic robot by a SOAR agent
+  </description>
+  <author>Tomás Murillo Morales</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ros_soar</url>
+  
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="soar"/>
+  <depend package="erratic_player"/>
+  <depend package="sensor_msgs"/>
+
+</package>

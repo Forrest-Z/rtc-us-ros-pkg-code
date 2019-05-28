@@ -1,0 +1,440 @@
+#Copies IO structures in suboperator
+sp {elaborate*state*io
+   (state <s> ^superstate.io <io>)
+-->
+   (<s> ^io <io>)
+}
+
+#Copies the superstate's operator's name into the suboperator's state's name
+sp {elaborate*state*name
+   (state <s> ^superstate.operator.name <name>)
+-->
+   (<s> ^name <name>)
+}
+
+########################################
+###
+###  State initialization
+###
+########################################
+
+#State intialization operator
+sp {move*propose*initialize-door-agent
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> +)
+   (<o> ^name initialize-door-agent)
+}
+
+sp {door-agent*apply*initialize-door-agent
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-door-agent)
+-->
+   (<s> ^name wandering-agent)
+}
+
+########################################
+###
+###  Look for a nearby wall to follow
+###
+########################################
+
+#Hang around to find a wall operator -> create move-to-wall substate
+sp {move*propose*move-to-wall
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 { <sonar0> > 0.7 }
+           ^sonarNo1 { <sonar1> > 0.7 }
+           ^sonarNo2 { <sonar2> > 0.7 }
+           ^sonarNo3 { <sonar3> > 0.7 }
+           ^sonarNo4 { <sonar4> > 0.7 }
+           ^sonarNo5 { <sonar5> > 0.7 }
+           ^sonarNo6 { <sonar6> > 0.7 }
+           ^sonarNo7 { <sonar7> > 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name move-to-wall)
+}
+
+#Substate move-to-wall operators to get closer to a nearby wall
+sp {move*propose*move-0
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 <sonar0>
+           ^sonarNo1 { <sonar1> > <sonar0> }
+           ^sonarNo2 { <sonar2> > <sonar0> }
+           ^sonarNo3 { <sonar3> > <sonar0> }
+           ^sonarNo4 { <sonar4> > <sonar0> }
+           ^sonarNo5 { <sonar5> > <sonar0> }
+           ^sonarNo6 { <sonar6> > <sonar0> }
+           ^sonarNo7 { <sonar7> > <sonar0> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction zero)
+}
+
+sp {move*propose*move-1
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo1 <sonar1>
+           ^sonarNo0 { <sonar0> > <sonar1> }
+           ^sonarNo2 { <sonar2> > <sonar1> }
+           ^sonarNo3 { <sonar3> > <sonar1> }
+           ^sonarNo4 { <sonar4> > <sonar1> }
+           ^sonarNo5 { <sonar5> > <sonar1> }
+           ^sonarNo6 { <sonar6> > <sonar1> }
+           ^sonarNo7 { <sonar7> > <sonar1> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction one)
+}
+
+sp {move*propose*move-2
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo2 <sonar2>
+           ^sonarNo0 { <sonar0> > <sonar2> }
+           ^sonarNo1 { <sonar1> > <sonar2> }
+           ^sonarNo3 { <sonar3> > <sonar2> }
+           ^sonarNo4 { <sonar4> > <sonar2> }
+           ^sonarNo5 { <sonar5> > <sonar2> }
+           ^sonarNo6 { <sonar6> > <sonar2> }
+           ^sonarNo7 { <sonar7> > <sonar2> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction two)
+}
+
+sp {move*propose*move-3
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo3 <sonar3>
+           ^sonarNo0 { <sonar0> > <sonar3> }
+           ^sonarNo1 { <sonar1> > <sonar3> }
+           ^sonarNo2 { <sonar2> > <sonar3> }
+           ^sonarNo4 { <sonar4> > <sonar3> }
+           ^sonarNo5 { <sonar5> > <sonar3> }
+           ^sonarNo6 { <sonar6> > <sonar3> }
+           ^sonarNo7 { <sonar7> > <sonar3> })
+-->
+   (<s> ^operator <o> + > =)
+   (<o> ^name move
+        ^direction three)
+}
+
+sp {move*propose*move-4
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo4 <sonar4>
+           ^sonarNo0 { <sonar0> > <sonar4> }
+           ^sonarNo1 { <sonar1> > <sonar4> }
+           ^sonarNo2 { <sonar2> > <sonar4> }
+           ^sonarNo3 { <sonar3> > <sonar4> }
+           ^sonarNo5 { <sonar5> > <sonar4> }
+           ^sonarNo6 { <sonar6> > <sonar4> }
+           ^sonarNo7 { <sonar7> > <sonar4> })
+-->
+   (<s> ^operator <o> + > =)
+   (<o> ^name move
+        ^direction four)
+}
+
+sp {move*propose*move-5
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo5 <sonar5>
+           ^sonarNo0 { <sonar0> > <sonar5> }
+           ^sonarNo1 { <sonar1> > <sonar5> }
+           ^sonarNo2 { <sonar2> > <sonar5> }
+           ^sonarNo3 { <sonar3> > <sonar5> }
+           ^sonarNo4 { <sonar4> > <sonar5> }
+           ^sonarNo6 { <sonar6> > <sonar5> }
+           ^sonarNo7 { <sonar7> > <sonar5> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction five)
+}
+
+sp {move*propose*move-6
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo6 <sonar6>
+           ^sonarNo0 { <sonar0> > <sonar6> }
+           ^sonarNo1 { <sonar1> > <sonar6> }
+           ^sonarNo2 { <sonar2> > <sonar6> }
+           ^sonarNo3 { <sonar3> > <sonar6> }
+           ^sonarNo4 { <sonar4> > <sonar6> }
+           ^sonarNo5 { <sonar5> > <sonar6> }
+           ^sonarNo7 { <sonar7> > <sonar6> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction six)
+}
+
+sp {move*propose*move-7
+   (state <s> ^name move-to-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo7 <sonar7>
+           ^sonarNo0 { <sonar0> > <sonar7> }
+           ^sonarNo1 { <sonar1> > <sonar7> }
+           ^sonarNo2 { <sonar2> > <sonar7> }
+           ^sonarNo3 { <sonar3> > <sonar7> }
+           ^sonarNo4 { <sonar4> > <sonar7> }
+           ^sonarNo5 { <sonar5> > <sonar7> }
+           ^sonarNo6 { <sonar6> > <sonar7> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction seven)
+}
+
+#Wall found -> turn (also needed for corners)
+sp {move*propose*turn-left-no-priority
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>
+             -^priority <p>)
+   (<sout> ^sonarNo3 { <sonar3> < 0.7 }
+           ^sonarNo4 { <sonar4> < 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name move
+       ^direction seven)
+}
+
+#Turning right in case no priority is selected
+sp {move*propose*turn-right-no-priority
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>
+             -^priority <p>)
+   (<sout> ^sonarNo3 { <sonar3> < 0.7 }
+           ^sonarNo4 { <sonar4> < 0.7 })
+-->
+  (<s> ^operator <o> + > =)
+  (<o> ^name move
+       ^direction zero)
+}
+
+#Turn when a priority is selected
+sp {move*propose*turn-priority
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>
+              ^priority <p>)
+   (<sout> ^sonarNo3 { <sonar3> < 0.7 }
+           ^sonarNo4 { <sonar4> < 0.7 })
+-->
+  (<s> ^operator <o> + > =)
+  (<o> ^name move
+       ^direction <p>)
+}
+
+#Wall placed on right or left -> create follow-wall substate
+sp {move*propose*follow-wall
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 { <sonar0> < 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name follow-wall)
+}
+
+sp {move*propose*follow-wall
+   (state <s> ^name wandering-agent
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo7 { <sonar7> < 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name follow-wall)
+}
+
+#Move left or right preferencies, when approaching a corner
+sp {move*right*better*than*left
+   (state <s> ^operator <o1> +
+              ^operator <o2> +
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 <sonar0>
+           ^sonarNo3 { <sonar3> < 0.7 }
+           ^sonarNo4 { <sonar4> < 0.7 }
+           ^sonarNo7 { <sonar7> < <sonar0> })
+   (<o1> ^name move
+         ^direction zero)
+   (<o2> ^name move
+         ^direction seven)
+-->
+   (<s> ^operator <o1> > <o2>)
+}
+
+sp {move*left*better*than*right
+   (state <s> ^operator <o1>
+              ^operator <o2>
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo7 <sonar7>
+           ^sonarNo3 { <sonar3> < 0.7 }
+           ^sonarNo4 { <sonar4> < 0.7 }
+           ^sonarNo0 { <sonar0> < <sonar7> })
+   (<o1> ^name move
+         ^direction zero)
+   (<o2> ^name move
+         ^direction seven)
+-->
+   (<s> ^operator <o2> > <o1>)
+}
+
+########################################
+###
+###  Follow wall operators
+###
+########################################
+
+#Follow wall on the right
+sp {move*propose*move-forward-1
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 { <sonar0> < 0.7 }
+           ^sonarNo1 { <sonar1> < 1 }
+           ^sonarNo3 { <sonar3> > 0.7 }
+           ^sonarNo4 { <sonar4> > 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name move
+       ^direction three)
+}
+
+#Follow wall on the left
+sp {move*propose*move-forward-2
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo7 { <sonar7> < 0.7 }
+           ^sonarNo6 { <sonar6> < 1 }
+           ^sonarNo3 { <sonar3> > 0.7 }
+           ^sonarNo4 { <sonar4> > 0.7 })
+-->
+  (<s> ^operator <o> + =)
+  (<o> ^name move
+       ^direction three)
+}
+
+#Wall turns, keep following it, and add priority to
+#keep turning in that direction
+sp {move*propose*wall-turns-left
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo7 { <sonar7> < 0.7 }
+           ^sonarNo6 { <sonar6> > 2 })
+-->
+  (<s> ^operator <o> + =)
+  (<s> ^operator <o2> + =)
+  (<o> ^name move
+       ^direction six)
+  (<o2> ^name priority
+        ^direction seven)
+}
+
+sp {move*propose*wall-turns-right
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo0 { <sonar0> < 0.7 }
+           ^sonarNo1 { <sonar1> > 2 })
+-->
+  (<s> ^operator <o> + =)
+  (<s> ^operator <o2> + =)
+  (<o> ^name move
+       ^direction one)
+  (<o2> ^name priority
+        ^direction seven)
+}
+
+#Apply priority operator
+sp {door-agent*apply*priority
+   (state <s> ^operator <op>)
+   (<op> ^name priority
+         ^direction <dir>)
+-->
+   (<s> ^priority <dir>)
+}
+
+#Remove priority augmentation
+sp {door-agent*apply*priority*remove
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<s> ^priority <dir>)
+   (<sout> ^sonarNo3 { <sonar3> > 0.7 }
+           ^sonarNo4 { <sonar4> > 0.7 })
+-->
+   (<s> ^priority <dir> -)
+}
+
+#Wall too close
+sp {move*propose*move-away-1
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo6 { <sonar6> < 0.5 })
+-->
+  (<s> ^operator <o> > + =)
+  (<o> ^name move
+       ^direction two)
+}
+
+sp {move*propose*move-away-2
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo1 { <sonar1> < 0.5 })
+-->
+  (<s> ^operator <o> > + =)
+  (<o> ^name move
+       ^direction five)
+}
+
+#Stick to walls
+sp {move*propose*move-closer-1
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo6 { <sonar6> > 0.6 }
+           ^sonarNo6 { <sonar6> < 0.7 })
+-->
+  (<s> ^operator <o> > + =)
+  (<o> ^name move
+       ^direction five)
+}
+
+sp {move*propose*move-closer-2
+   (state <s> ^name follow-wall
+              ^io.input-link.sonars-output <sout>)
+   (<sout> ^sonarNo1 { <sonar1> > 0.6 }
+           ^sonarNo1 { <sonar1> < 0.7 })
+-->
+  (<s> ^operator <o> > + =)
+  (<o> ^name move
+       ^direction two)
+}
+
+########################################
+###
+###  Apply and remove move operators
+###
+########################################
+
+
+sp {door-agent*apply*move
+   (state <s> ^operator <op>
+              ^io.output-link <out>)
+   (<op> ^name move
+         ^direction <dir>)
+-->
+   (<out> ^move.move_dir <dir>)
+}
+
+sp {door-agent*apply*move*remove-move
+   (state <s> ^operator.name move
+              ^io.output-link <out>)
+   (<out> ^move <move>)
+   (<move> ^status complete)
+-->
+   (<out> ^move <move> -)
+}
+

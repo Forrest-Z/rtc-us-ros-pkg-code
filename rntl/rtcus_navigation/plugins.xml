@@ -1,0 +1,24 @@
+<library path="lib/librtcus_navigation">
+
+	<class name="rtcus_navigation/default_nonholonomic_DynamicState2D_Twist2D"
+		type="rtcus_navigation::state_estimation::default_nonholonomic_DynamicState2D_Twist2D"
+		base_class_type="rtcus_navigation::NavigationNodeComponent">
+		<description>Predictive State Estimation. Useful for the PTC method
+		</description>
+	</class>
+
+	<class name="rtcus_navigation/non_time_DynamicState2D_Twist2D"
+		type="rtcus_navigation::state_estimation::non_time_DynamicState2D_Twist2D"
+		base_class_type="rtcus_navigation::NavigationNodeComponent">
+		<description>Typical no state estimation. Last reading are used.
+		</description>
+	</class>
+
+	<class name="rtcus_navigation/nonholonomic_trajectory_rollout2d"
+		type="rtcus_navigation::state_estimation::nonholonomic_trajectory_rollout2d"
+		base_class_type="rtcus_navigation::NavigationNodeComponent">
+		<description>Typical no state estimation. Last reading are used.
+		</description>
+	</class>
+
+</library>

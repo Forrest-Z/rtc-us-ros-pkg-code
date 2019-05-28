@@ -1,0 +1,194 @@
+sp {test2*propose*initialize-test2
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name initialize-test2)
+}
+
+sp {test2*apply*initialize-test2
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-test2)
+-->
+   (<s> ^name move-agent)
+}
+
+sp {test2*propose*move-N
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir south)
+   (<sout> ^sonarNo0 <sonar0>
+           ^sonarNo1 { <sonar1> <= <sonar0> }
+           ^sonarNo2 { <sonar2> <= <sonar0> }
+           ^sonarNo3 { <sonar3> <= <sonar0> }
+           ^sonarNo4 { <sonar4> <= <sonar0> }
+           ^sonarNo5 { <sonar5> <= <sonar0> }
+           ^sonarNo6 { <sonar6> <= <sonar0> }
+           ^sonarNo7 { <sonar7> <= <sonar0> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction north)
+}
+
+sp {test2*propose*move-NE
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir south-west)
+   (<sout> ^sonarNo1 <sonar1>
+           ^sonarNo0 { <sonar0> <= <sonar1> }
+           ^sonarNo2 { <sonar2> <= <sonar1> }
+           ^sonarNo3 { <sonar3> <= <sonar1> }
+           ^sonarNo4 { <sonar4> <= <sonar1> }
+           ^sonarNo5 { <sonar5> <= <sonar1> }
+           ^sonarNo6 { <sonar6> <= <sonar1> }
+           ^sonarNo7 { <sonar7> <= <sonar1> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction north-east)
+}
+
+sp {test2*propose*move-E
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir west)
+   (<sout> ^sonarNo2 <sonar2>
+           ^sonarNo0 { <sonar0> <= <sonar2> }
+           ^sonarNo1 { <sonar1> <= <sonar2> }
+           ^sonarNo3 { <sonar3> <= <sonar2> }
+           ^sonarNo4 { <sonar4> <= <sonar2> }
+           ^sonarNo5 { <sonar5> <= <sonar2> }
+           ^sonarNo6 { <sonar6> <= <sonar2> }
+           ^sonarNo7 { <sonar7> <= <sonar2> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction east)
+}
+
+sp {test2*propose*move-SE
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir north-west)
+   (<sout> ^sonarNo3 <sonar3>
+           ^sonarNo0 { <sonar0> <= <sonar3> }
+           ^sonarNo1 { <sonar1> <= <sonar3> }
+           ^sonarNo2 { <sonar2> <= <sonar3> }
+           ^sonarNo4 { <sonar4> <= <sonar3> }
+           ^sonarNo5 { <sonar5> <= <sonar3> }
+           ^sonarNo6 { <sonar6> <= <sonar3> }
+           ^sonarNo7 { <sonar7> <= <sonar3> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction south-east)
+}
+
+sp {test2*propose*move-S
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir north)
+   (<sout> ^sonarNo4 <sonar4>
+           ^sonarNo0 { <sonar0> <= <sonar4> }
+           ^sonarNo1 { <sonar1> <= <sonar4> }
+           ^sonarNo2 { <sonar2> <= <sonar4> }
+           ^sonarNo3 { <sonar3> <= <sonar4> }
+           ^sonarNo5 { <sonar5> <= <sonar4> }
+           ^sonarNo6 { <sonar6> <= <sonar4> }
+           ^sonarNo7 { <sonar7> <= <sonar4> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction south)
+}
+
+sp {test2*propose*move-SW
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir north-east)
+   (<sout> ^sonarNo5 <sonar5>
+           ^sonarNo0 { <sonar0> <= <sonar5> }
+           ^sonarNo1 { <sonar1> <= <sonar5> }
+           ^sonarNo2 { <sonar2> <= <sonar5> }
+           ^sonarNo3 { <sonar3> <= <sonar5> }
+           ^sonarNo4 { <sonar4> <= <sonar5> }
+           ^sonarNo6 { <sonar6> <= <sonar5> }
+           ^sonarNo7 { <sonar7> <= <sonar5> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction south-west)
+}
+
+sp {test2*propose*move-W
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir east)
+   (<sout> ^sonarNo6 <sonar6>
+           ^sonarNo0 { <sonar0> <= <sonar6> }
+           ^sonarNo1 { <sonar1> <= <sonar6> }
+           ^sonarNo2 { <sonar2> <= <sonar6> }
+           ^sonarNo3 { <sonar3> <= <sonar6> }
+           ^sonarNo4 { <sonar4> <= <sonar6> }
+           ^sonarNo5 { <sonar5> <= <sonar6> }
+           ^sonarNo7 { <sonar7> <= <sonar6> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction west)
+}
+
+sp {test2*propose*move-NW
+   (state <s> ^name move-agent
+              ^io.input-link.sonars-output <sout>
+              -^last-dir south-east)
+   (<sout> ^sonarNo7 <sonar7>
+           ^sonarNo0 { <sonar0> <= <sonar7> }
+           ^sonarNo1 { <sonar1> <= <sonar7> }
+           ^sonarNo2 { <sonar2> <= <sonar7> }
+           ^sonarNo3 { <sonar3> <= <sonar7> }
+           ^sonarNo4 { <sonar4> <= <sonar7> }
+           ^sonarNo5 { <sonar5> <= <sonar7> }
+           ^sonarNo6 { <sonar6> <= <sonar7> })
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name move
+        ^direction north-west)
+}
+
+sp {test2*apply*move
+   (state <s> ^operator <op>
+              ^io.output-link <out>)
+   (<op> ^name move
+         ^direction <dir>)
+-->
+   (<out> ^move.move_dir <dir>)
+}
+
+sp {test2*apply*move*remove-move
+   (state <s> ^operator.name move
+              ^io.output-link <out>)
+   (<out> ^move <move>)
+   (<move> ^status complete)
+-->
+   (<out> ^move <move> -)
+}
+
+sp {test2*apply*move*create-last-direction
+   (state <s> ^operator <o>)
+   (<o> ^name move
+        ^direction <dir>)
+-->
+   (<s> ^last-dir <dir>)
+}
+
+sp {test2*apply*move*remove-last-direction
+   (state <s> ^operator <o>
+              ^last-dir <ld>)
+   (<o> ^name move
+        ^direction <> <ld>)
+-->
+   (<s> ^last-dir <ld> -)
+}
+

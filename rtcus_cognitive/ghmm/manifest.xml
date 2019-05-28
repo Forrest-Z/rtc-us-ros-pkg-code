@@ -1,0 +1,15 @@
+<package>
+  <description brief="Gaussian Hidden Markov Library">
+	Python bindings for Gaussian Hidden Markov Library (ghmm) - http://ghmm.org/
+	Rutgers University
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>LGPL</license>
+  <review status="reviewed" notes="cpp export yet not specified"/>
+  <url>http://ros.org/wiki/ghmm</url>
+  <export>
+    <python path="${prefix}/lib/python2.7/site-packages"/>
+  </export>
+  <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib"></cpp>
+  <rosdep name="swig"/>
+ </package>

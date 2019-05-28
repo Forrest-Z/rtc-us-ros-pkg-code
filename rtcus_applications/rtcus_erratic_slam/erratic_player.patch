@@ -1,0 +1,122 @@
+Index: src/erratic_player.cpp
+===================================================================
+--- src/erratic_player.cpp	(revision 1255)
++++ src/erratic_player.cpp	(working copy)
+@@ -235,10 +235,23 @@
+         if (enable_ir) { assert((this->ir_device = deviceTable->GetDevice(player_addr_ir, false))); }
+         if (enable_sonar) { assert((this->sonar_device = deviceTable->GetDevice(player_addr_sonar,false))); }
+         if (enable_vision_pan_tilt) { assert((this->vision_ptz_device = deviceTable->GetDevice(player_addr_vision_ptz,false))); }
+-        if (enable_ranger_tilt) { assert((this->ranger_tilt_device = deviceTable->GetDevice(player_addr_ranger_tilt,false))); }
++        if (enable_ranger_tilt)
++        {
++        	assert((this->ranger_tilt_device = deviceTable->GetDevice(player_addr_ranger_tilt,false)));
+ 
++
++        }
++
+         // Create a message queue
+         this->q = QueuePointer(false, PLAYER_QUEUE_LEN);
++
++        /*if (enable_ranger_tilt)
++        {
++        double ranger_home;
++                	private_nh.getParam("ranger_home",ranger_home);
++                	ROS_INFO("Ranger Home:%lf",ranger_home);
++        }*/
++
+     }
+ 
+     ~ErraticNode()
+@@ -284,6 +297,7 @@
+ 
+         if (enable_ranger_tilt) { cmd_ranger_tilt_sub_=node_.subscribe<std_msgs::Float64>("cmd_ranger_tilt", 1, boost::bind(&ErraticNode::cmdRangerTiltReceived,this,_1)); }
+ 
++        cmdRangerTilt(0);
+         return(0);
+     }
+ 
+@@ -361,7 +375,6 @@
+     void getCenter()
+     {
+         Message* msg = NULL;
+-
+         //Wait until there is a message for geometry
+         while (!(msg = this->pos_device->Request(this->q, PLAYER_MSGTYPE_REQ,
+                                                  PLAYER_POSITION2D_REQ_GET_GEOM,
+@@ -379,22 +392,30 @@
+         delete msg;
+     }
+ 
+-    void cmdRangerTiltReceived (const std_msgs::Float64::ConstPtr& tilt)
++    void cmdRangerTilt(double tilt_angle)
+     {
+         player_ptz_cmd req;
+         memset(&req, 0, sizeof(req));
+ 
+-        req.tilt=tilt->data;
++       	req.tilt=tilt_angle;
+ 
++
++
+         this->ranger_tilt_device->PutMsg(this->q,
+                                          PLAYER_MSGTYPE_CMD,
+                                          PLAYER_PTZ_CMD_STATE,
+                                          (void*) &req,
+                                          sizeof(req),NULL);
+     }
++    void cmdRangerTiltReceived (const std_msgs::Float64::ConstPtr& tilt)
++    {
++    	ROS_INFO("update ranger tilt-> %lf",tilt->data);
++    	cmdRangerTilt(tilt->data);
++    }
+ 
+     void updateVisionPanTilt()
+     {
++
+         player_ptz_cmd req;
+         memset(&req, 0, sizeof(req));
+ 
+@@ -438,6 +459,8 @@
+ 
+     void doUpdate()
+     {
++
++
+         Message* msg = NULL;
+ 
+         // Block until there's a message on the queue
+@@ -572,6 +595,11 @@
+                      hdr->addr.index);
+         }
+ 
++
++		printf("hi");
++        cmdRangerTilt(0);
++	printf("nice");
++
+         // We're done with the message now
+         delete msg;
+     }
+@@ -631,7 +659,9 @@
+         ROS_ERROR("Failed to enable motors");
+     }
+ 
++
+     erratic.getCenter();
++    
+ 
+     /////////////////////////////////////////////////////////////////
+     // Main loop; grab messages off our queue and republish them via ROS
+Index: launch/erratic_with_ranger_and_vision.launch
+===================================================================
+--- launch/erratic_with_ranger_and_vision.launch	(revision 1255)
++++ launch/erratic_with_ranger_and_vision.launch	(working copy)
+@@ -3,7 +3,7 @@
+         <remap from="odom" to="odom"/>
+         <remap from="battery_state" to="battery_state"/>
+         <param name="port_name" type="str" value="/dev/ttyUSB0"/>
+-        <param name="enable_ir" type="bool" value="True"/>
++        <param name="enable_ir" type="bool" value="False"/>
+         <param name="enable_sonar" type="bool" value="True"/>
+         <param name="enable_vision_pan_tilt" type="bool" value="True"/>
+         <param name="enable_ranger_tilt" type="bool" value="True"/>

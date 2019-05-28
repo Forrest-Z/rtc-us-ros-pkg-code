@@ -1,0 +1,20 @@
+<package>
+	<description brief="rtcus_stamp">
+
+		rtcus_stamp
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_stamp</url>
+	<depend package="roscpp" />
+	<depend package="rtcus_assert" />
+
+	<export>
+		<cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp" lflags="-L${prefix}/lib" />
+	</export>
+
+</package>
+
+

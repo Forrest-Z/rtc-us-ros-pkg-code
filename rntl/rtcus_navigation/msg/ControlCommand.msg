@@ -1,0 +1,4 @@
+string command_value
+string STOP_COMMAND="STOP_COMMAND"
+string START_COMMAND="START_COMMAND"
+string RESET_NODE="RESET_NODE"

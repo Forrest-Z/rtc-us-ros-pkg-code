@@ -1,0 +1,43 @@
+delayed_topics: [
+   {
+    input_topic_name: base_scan, 
+    output_topic_name: delayed_base_scan, 
+    topic_type: sensor_msgs/LaserScan, 
+    delay_mean: 5.0, 
+    delay_std: 0.00000001,
+    frame_format: tf_delayed_%s
+   }, 
+   {
+     input_topic_name: odom,
+     output_topic_name: delayed_odom, 
+     topic_type: nav_msgs/Odometry, 
+     delay_mean: 0.0, 
+     delay_std: 0.00001,
+     frame_format: tf_delayed_%s
+   },
+   {
+     input_topic_name: /move_base_node/local_costmap/robot_footprint,
+     output_topic_name: delayed_robot_footprint, 
+     topic_type: geometry_msgs/PolygonStamped, 
+     delay_mean: 5.0, 
+     delay_std: 0.000000001,
+     frame_format: tf_delayed_%s
+   },
+   {
+     input_topic_name: joy_goal,
+     output_topic_name: /move_base_simple/goal, 
+     topic_type: geometry_msgs/PoseStamped, 
+     delay_mean: 5.0, 
+     delay_std: 0.00001,
+     frame_format: base_link
+   }
+   ]
+   
+tfMapping: 
+   {
+    prefix: /tf_delayed_, 
+    fixed_frame: /map, 
+    delay_mean: 5.0, 
+    delay_std: 0.00000001
+   }
+   

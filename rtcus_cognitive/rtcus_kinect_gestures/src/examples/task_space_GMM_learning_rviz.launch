@@ -1,0 +1,17 @@
+<launch>
+	<arg name="gesture_entry" default="wave_for_task_space"/>
+	<arg name="bag_file" default="$(find rtcus_kinect_gestures)/data/bags/task_space_wave/saludo_alto_respecto_cuello_2011-09-30-13-21-51.bag"/> 	
+	<env name="LD_LIBRARY_PATH" value="/opt/ros/diamondback/stacks/visualization_common/ogre/build/ogre_src_v1-7-1/build/lib/" />
+
+	<node pkg="rviz" type="rviz" name="rviz" args="--display-config $(find rtcus_kinect_gestures)/config/rviz/rviz-config-2.vcg"></node>
+	<node pkg="rtcus_kinect_gestures" type="task_space_GMM_learning_rviz.py" name="learning_node" args="$(arg gesture_entry)" output="screen">
+	</node>
+	
+	<node pkg="rosbag" type="rosbag" name="recorded_gesture" args="play $(arg bag_file)" respawn="true">
+			<remap from="tf" to="tf_input"></remap>
+			<remap from="/camera/rgb/image_raw" to="image_input"></remap>
+			<remap from="scene_cloud" to="scene_cloud_input"></remap>
+	</node>
+	<param name="use_sim_time" value="false"/>
+	<node pkg="rtcus_kinect_gestures" type="Mock_tf_rosbag.py" name="time_restamper"></node>
+</launch>

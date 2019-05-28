@@ -1,0 +1,6 @@
+linear_forward_speed_limit: 1.0 #m/sec #according to the documentation
+linear_backwards_speed_limit: 0.0 
+linear_acceleration_limit: 2.0 #m/sec²
+linear_brake_limit: 3.0 #m/sec²
+angular_speed_limit: 1.0 #rad/sec according the doc it is 200 deg/sec
+angular_acceleration_limit: 2.0 #rad/sec² according to the documentation 720 deg/sec... but by default set to 400 deg/sec	

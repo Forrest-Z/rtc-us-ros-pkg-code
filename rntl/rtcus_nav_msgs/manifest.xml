@@ -1,0 +1,35 @@
+<package>
+	<description brief="rtcus_nav_msgs">
+
+		Defines a set of common of navigation msgs. This is not a substitution of the
+		ros common package nav_msgs but it is complementary.
+		It is mainly focused for improve the performance of the algorithms using
+		lighter data structures. For instance, deterministic motion
+		planning on the 2D plane would have to use the nav_msgs/Odometry msg. However
+		this data structure is too weight for this application
+		since it provides futher information like covariance matrixes for
+		uncertainty description and also fields for describe 3D information.
+
+		These messages are mainly used for c++ algorithm implementations given
+		they are light. However it is recommended (and we also promote) to use
+		standard navigation
+		messages like those in nav_msgs for inter-ros-node-processes communications.
+		To transform data between this rtcus_nav_msgs message types and
+		standard (nav_msgs and geometry_msgs) message types
+		see the package rtcus_conversions.
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_nav_msgs</url>
+	<export>
+		<cpp
+			cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include"
+			lflags="-L${prefix}/lib" />
+	</export>
+	<depend package="geometry_msgs" />
+	<depend package="std_msgs" />
+</package>
+
+

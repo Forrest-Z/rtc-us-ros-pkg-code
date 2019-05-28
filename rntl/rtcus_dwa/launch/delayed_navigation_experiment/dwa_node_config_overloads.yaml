@@ -1,0 +1,35 @@
+defer_start: false
+planner_frequency: 20
+   
+goal_reach_detection:
+   acceptance_radious: 3.5
+   reach_latch: false
+   
+perception_port:
+   artificial_obstacles:
+      enabled: true
+      publish_obstacle_decoration_info: true
+      artificial_obstacle_fillup_distance: 0.3 #meters
+      artificial_obstacle_fillup_distance_max: 20.0
+      distance_cutoff: 0.05 #meters
+      
+action_port:
+   output_type: StampedTwist2D
+   #if maintain this to 0, make sure that the old messages are not discarded or the robot may stay suck
+   application_time_oracle: 0.5 #Time delay oracle
+   enable_stamped_commands: False
+   output_topic_name: cmd_vel
+
+planner:
+   #k_clearance: 1
+   #k_heading: 1.1
+   #k_velocity: 1.1
+   #v_res: 18
+   omega_res: 24
+   heading_cost_strategy: face_goal_dwa_default #trajectory_goal_intersection 
+   simulate_time_step: 0.5 #seconds
+   auto_simulate_time_step: false
+
+factory:
+   use_high_noise_state_port: false
+

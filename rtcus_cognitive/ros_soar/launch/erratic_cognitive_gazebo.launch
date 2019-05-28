@@ -1,0 +1,16 @@
+<launch>
+	<include file="$(find gazebo_worlds)/launch/wg_world.launch"/>
+	<include file="$(find ros_soar)/launch/erratic_laser_mobile_base.launch" />
+
+	<node pkg="ros_soar" type="soar_test_gazebo" name="soar_node" args="">
+	    <param name="speed" value="0.1"/>
+	    <remap from="commands" to="/cmd_vel"/>
+	    <remap from="sonar" to="/base_scan/scan"/>
+	</node>
+
+	<!-- Save data in a log file for later analysis -->
+	<!-- <node pkg="rosbag" type="rosbag" name="data_record" args="record -a -O $(find ros_soar)/data/record_gazebo.bag">
+	</node> -->
+	
+</launch>
+

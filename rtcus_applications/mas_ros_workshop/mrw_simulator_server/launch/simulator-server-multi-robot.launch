@@ -1,0 +1,24 @@
+<launch>
+	<master auto="start"/>
+	<param name="/use_sim_time" value="true"/>  
+
+	 <node pkg="map_server" type="map_server" name="map_server" args="$(find mrw_simulator_server)/maps/willow-full.pgm 0.1" respawn="false" >
+	    <param name="frame_id" value="/map" />
+	    <remap from="map" to="/map"/>
+	  </node>
+
+	<group ns="simulator_server">
+	  <node pkg="stage" type="stageros" name="stageros" args="$(optenv ROS_STAGE_GRAPHICS) $(find mrw_simulator_server)/worlds/multi-robot.world" respawn="false">
+	    <param name="base_watchdog_timeout" value="0.2"/>
+
+	    <remap from="/robot_4" to="/"/>
+	  </node>
+
+	 <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mrw_simulator_server)/config/rviz-config.vcg" />-->
+
+	  <node name="fire_sensor" pkg="mrw_simulator_server" type="virtual_sensor.py"/>
+
+
+	</group>
+
+</launch>

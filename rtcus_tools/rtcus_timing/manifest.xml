@@ -1,0 +1,21 @@
+<package>
+  <description brief="rtcus_timing">
+	A cpp library for performance analysis. It makes possible timing code sections and publishing them on a topic. 
+
+This package is open to ideas and contributions. Please contact with us.
+We have some ideas for the near future like use performance tools and profilers like PAPI or PINTool for a futher performance comparison.
+Another future idea is to make a python binding with a similar same API.
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rtcus_timing</url>
+
+ 	<depend package="roscpp"/>
+ 	
+ 	<export>
+    <cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp" lflags="-L${prefix}/lib -lrtcus_timing"/>
+  </export>
+</package>
+
+

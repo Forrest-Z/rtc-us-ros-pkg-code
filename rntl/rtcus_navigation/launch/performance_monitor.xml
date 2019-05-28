@@ -1,0 +1,7 @@
+<launch>
+	<arg name="navigation_node_name" default="navigation_node" />
+	<arg name="extra_plot" default=""/>
+	<node pkg="rxtools" type="rxplot" name="plotting_time" respawn="true"
+		args="--ymin 0  --buffer=5 --title='Timming chart' $(arg navigation_node_name)/time_observer/current_execution_rate/data --ymin 0  $(arg navigation_node_name)/time_observer/task_event_delay/data/nsecs --ymin 0 /$(arg navigation_node_name)/timing/control_task/duration/nsecs $(arg navigation_node_name)/timing/world_proc/duration/nsecs,$(arg navigation_node_name)/timing/goal_proc/duration/nsecs,$(arg navigation_node_name)/timing/estimation/duration/nsecs,$(arg navigation_node_name)/timing/planning/duration/nsecs $(arg extra_plot)" />
+</launch>
+		

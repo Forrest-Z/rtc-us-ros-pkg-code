@@ -1,0 +1,4 @@
+time current_stamp
+time expected_stamp
+rtcus_navigation/StatusType status_type
+

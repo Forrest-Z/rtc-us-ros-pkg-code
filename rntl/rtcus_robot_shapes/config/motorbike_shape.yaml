@@ -1,0 +1,11 @@
+#stage motorbike shape config
+# remove it when stagerep implement the shape reading
+#size [1.5 0.8 0.25]
+
+footprint: "[ [-0.6, 0.4], [0.6, 0.4], [0.6, -0.4],[-0.6, -0.4]]"
+
+#for ciruclar robot shape classes
+radius: 0.9
+  
+
+  

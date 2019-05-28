@@ -1,0 +1,62 @@
+<package>
+	<description brief="rtcus_compositions">
+		This package contains a c++ generic
+		template library to make compsitions and inverse compositions between
+		different kinds of geometric datatypes (ie: inverse compose a
+		pcl::PointCloud[PointXY] with a Pose). Consider other example, if the
+		local frame is moving and dynamic information is avaliable
+		a possible
+		composition would be (inverse compose pcl::PointCloud[]PointXYdXdY>]
+		with a PoseWithTwist). It is designed to be extensible and this use is
+		recomendable for
+		other generic algorithms.
+
+		Another interesting example
+		is composing other kind of geometrical data. For
+		instance composing two
+		Odometry messages. The twist data
+		are expresed
+		in the child pose frame.
+		So compositions implies some transformations.
+		The change of the
+		reference system of some twist information
+		is also a
+		non-trivial
+		problem.
+
+		The TF package provides a good set of type transformations of
+		different
+		kinds of datastructures. The MRPT software provides as well
+		many
+		features
+		for compositions and inverse compositions of different
+		datatypes. This package try to unify all these transformations in a
+		generic template
+		library. Because of this, this package is absolutely
+		open to accept new kinds of transformation software.
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_compositions</url>
+
+	<export>
+		<cpp
+			cflags="-I${prefix}/include -I${prefix}/cfg/cpp -I${prefix}/msg_gen/cpp/include"
+			lflags="-L${prefix}/lib -lrtcus_compositions" />
+	</export>
+
+	<depends package="roscpp" />
+	<depends package="rtus_conversions" />
+	<depends package="rtcus_assert" />
+	<depend package="sensor_msgs" />
+	<depend package="geometry_msgs" />
+	<depend package="rtcus_nav_msgs" />
+	<depend package="pcl_ros" />
+	<depend package="pcl" />
+	<depend package="mrpt_bridge" />
+	<depend package="rtcus_assert" />
+</package>
+
+

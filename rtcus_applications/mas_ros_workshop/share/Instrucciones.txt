@@ -1,0 +1,31 @@
+Directorio del software a utilizar:
+/opt/ros/rtc-us-ros-pkg/trunk/rtcus_applications/mas_ros_workshop
+
+Actualizar el software
+svn update . 
+
+
+Ejercicio 0:
+MASTER: rostopic pub -r 1 /buzon std_msgs/String -- "hola desde `hostname`“
+MASTER: rxgraph
+
+AGENT: rostopic  echo /buzon
+AGENT: rostopic info /buzon
+AGENT: rxgraph
+
+
+
+Ejercicio1:
+
+MASTER: Mostrar el STAGE en el la pantalla. Explicar números y colores
+MASTER: roslaunch launch/simulator-server-multi-robot.launch
+- El simulador arranca
+
+AGENT: export ROS_MASTER_URI=http://CID-144:11311
+AGENT: roslaunch mrw_robot_agent robot_agent_ej1.launch robot_number:={NUM}
+- Se abre rviz
+- Todos tienen que poner en fixed frame: /robot_{NUM}/odom
+
+MASTER: Explicar los distintos marcos de referencia de cada robot
+MASTER: rosrun tf view_frames;evince frames.pdf
+

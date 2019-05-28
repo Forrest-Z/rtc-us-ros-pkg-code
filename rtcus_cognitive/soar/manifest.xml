@@ -1,0 +1,17 @@
+<package>
+  <description brief="soar">
+	Includes the required SOAR libraries to write SOAR agents using SML
+  </description>
+  <author>Tomás Murillo Morales</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/soar</url>
+  
+  <export>
+  	<cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib  -L${prefix}/lib -lClientSML -lElementXML -lConnectionSML -lSoarKernelSML -lElementXML"/>
+  </export>
+  
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+
+</package>

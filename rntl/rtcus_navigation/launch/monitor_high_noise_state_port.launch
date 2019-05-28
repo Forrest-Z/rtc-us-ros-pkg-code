@@ -1,0 +1,5 @@
+<launch>
+	<node name="prediction_error_plot" pkg="rxtools" type="rxplot"
+		args="--ymin=-2 --ymax=2 --buffer=5 --refresh_rate=10 --title='HIGH Noise State port'   /navigation_node/state_port/procesed_state_reading/state/twist/linear,/odom/twist/twist/linear/x" />
+
+</launch>

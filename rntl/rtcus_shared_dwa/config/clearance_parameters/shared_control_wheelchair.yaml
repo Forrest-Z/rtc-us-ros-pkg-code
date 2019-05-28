@@ -1,0 +1,14 @@
+frequency: 25.0
+   
+state_estimation_type: rtcus_navigation/default_nonholonomic_DynamicState2D_Twist2D
+
+planner:
+   k_clearance: 1
+   k_heading: 0.25
+   k_velocity: 1
+   omega_res: 19
+   max_collision_distance: 50.0
+   non_admisibility_repulsion_weight: 0.3
+   secure_velocity_saturation_admisibility_threshold: 0.9
+   security_area_obstacle_inflation: 0.3
+   obstacle_inflation: 0.45

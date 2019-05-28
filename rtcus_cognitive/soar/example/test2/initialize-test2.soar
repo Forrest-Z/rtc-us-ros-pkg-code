@@ -1,0 +1,14 @@
+sp {test2*propose*initialize-test2
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name initialize-test2)
+}
+
+sp {test2*apply*initialize-test2
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-test2)
+-->
+   (<s> ^name move-agent)
+}

@@ -1,0 +1,19 @@
+<package>
+  <description brief="erratic_slam">
+     rtcus_erratic_slam
+  </description>
+  <author>Pablo Iñigo Blasco</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/erratic_slam</url>
+  
+  <depend package="rospy"/>
+  
+  <depend package="sound_play"/>
+  <depend package="joy"/>
+  <depend package="geometry_msgs"/>
+  <depend package="std_msgs"/>
+
+</package>
+
+

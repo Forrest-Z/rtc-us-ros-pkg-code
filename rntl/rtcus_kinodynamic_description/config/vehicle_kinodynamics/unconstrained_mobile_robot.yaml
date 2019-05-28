@@ -1,0 +1,5 @@
+linear_forward_speed_limit: 999999 #m/sec
+linear_acceleration_limit: 999999 #m/sec²
+linear_brake_limit: 999999 #m/sec²
+angular_speed_limit: 999999 #rad/sec
+angular_acceleration_limit: 999999 #rad/sec²

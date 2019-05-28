@@ -1,0 +1,48 @@
+<launch>
+	<arg name="axis_linear" default="1" />
+	<arg name="axis_angular" default="0" />
+	<arg name="scale_linear" default="4.0" />
+	<arg name="scale_angular" default="2.0" />
+	<arg name="robot_base_link" default="base_link" />
+	<arg name="defer_start" default="false" />
+	<arg name="simulation" default="true" />
+	<arg name="camera_view" default="true" />
+
+	<node pkg="joy" name="joy" type="joy">
+	</node>
+
+	<node name="camera_view" pkg="image_view" type="image_view"
+		if="$(arg camera_view)">
+		<remap from="image" to="/camera" />
+	</node>
+
+	<group if="$(arg simulation)">
+		<arg name="robot_shape" default="$(find rtcus_robot_shapes)/config/motorbike_shape.yaml" />
+		<arg name="simulation_configuration" default="$(find rtcus_dwa)/config/simulation_configuration.yaml" />
+		<arg name="kinodynamic_model"
+			default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/motorbike_kynodynamic.yaml" />
+		<!-- SIMULATOR STAGE -->
+		<param name="/use_sim_time" value="true" />
+
+		<remap from="base_scan" to="scan" />
+		<include file="$(find stage_rep)/launch/stage_rep_node.launch">
+			<arg name="output" value="log" />
+			<arg name="world_file"
+				value="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" />
+			<arg name="robot_shape" value="$(arg robot_shape)" />
+			<arg name="kinodynamic_description" value="$(arg kinodynamic_model)" />
+			<arg name="simulation_configuration" value="$(arg simulation_configuration)" />
+		</include>
+	</group>
+
+	<node pkg="rtcus_shared_dwa" name="manual_joy_teleop"
+		type="teleop_joy_proportional_to_twist">
+		<param name="axis_linear" value="$(arg axis_linear)" />
+		<param name="axis_angular" value="$(arg axis_angular)" />
+		<param name="scale_linear" value="$(arg scale_linear)" />
+		<param name="scale_angular" value="$(arg scale_angular)" />
+		<param name="robot_base_link" value="$(arg robot_base_link)" />
+		<param name="defer_start" value="$(arg defer_start)" />
+	</node>
+</launch>

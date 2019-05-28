@@ -1,0 +1,44 @@
+<package>
+	<description brief="rtcus_dwa">
+		This is an implementation of a variant
+		of The Dynamic Window Approach developed by the University of Seville
+		(Spain).
+		This is also the first navigation planner (local planning)
+		used for the navigation framework "rtcus_navigation". For this this
+		can be a sample about how to develop new navigation algorithms for
+		this architecture.
+
+		[Ref to the
+		article]
+
+	</description>
+	<author>Pablo Iñigo Blasco</author>
+	<license>BSD</license>
+	<review status="unreviewed" notes="" />
+	<url>http://ros.org/wiki/rtcus_dwa</url>
+
+	<export>
+		<cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp" lflags="-L${prefix}/lib" />
+		<!-- <rtcus_navigation plugin="${prefix}/plugins.xml" /> -->
+	</export>
+
+	<depend package="roscpp" />
+
+	<depend package="rtcus_motion_models" />
+	<depend package="rtcus_navigation" />
+	<depend package="rtcus_navigation_tools" />
+	<depend package="rtcus_kinodynamic_description" />
+
+	<depend package="sensor_msgs" />
+	<depend package="geometry_msgs" />
+	<depend package="laser_geometry" />
+
+	<depend package="dynamic_reconfigure" />
+	<depend package="pcl" />
+	<depend package="cv_bridge" />
+	<depend package="pcl_ros" />
+	<depend package="cv_bridge" />
+	<depend package="opencv2" />
+	<depend package="image_transport" />
+	<depend package="visualization_msgs" />
+</package>

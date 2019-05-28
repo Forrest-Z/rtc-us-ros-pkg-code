@@ -1,0 +1,27 @@
+<launch>
+	<arg name="output" default="log" />
+	<arg name="simulation_configuration" default="$(find stage_rep)/config/stage_rep_config.yaml" />
+
+	<arg name="world_file" default="$(find 
+		rtcus_dwa)/tests/demo_config/stage_demo.world" />
+
+	<arg name="simulated_vehicle_kinodynamics"
+		default="$(find rtcus_kinodynamic_description)/config/vehicle_kinodynamics/unconstrained_mobile_robot.yaml" />
+
+	<arg name="robot_shape" default="$(find rtcus_robot_shapes)/config/motorbike_shape.yaml" />
+
+
+	<!-- SIMULATOR STAGE REP -->
+	<param name="/use_sim_time" value="true" />
+	<node name="simulator" pkg="stage_rep" type="stageros" args="$(arg world_file)"
+		output="$(arg output)">
+		<rosparam command="load"
+			file="$(find stage_rep)/config/stage_rep_config.yaml" />
+
+		<rosparam command="load" ns="kinodynamic_description"
+			file="$(arg simulated_vehicle_kinodynamics)" />
+		<rosparam command="load" ns="robot_shape" file="$(arg robot_shape)" />
+		<rosparam command="load" file="$(arg simulation_configuration)" />
+	</node>
+
+</launch>

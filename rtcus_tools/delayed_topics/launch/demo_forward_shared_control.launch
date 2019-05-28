@@ -1,0 +1,33 @@
+<launch>
+	<param name="/use_sim_time" value="true" />
+	
+	<!-- <node name="map_server" pkg="map_server" type="map_server"
+		args="$(find navigation_stage)/stage_config/maps/willow-full.pgm 0.1"
+		respawn="false" /> -->
+		
+	<node pkg="stage" type="stageros" name="stageros"
+		args="$(find delayed_teleop)/config/stage_simulation.world"
+		respawn="false">
+		<param name="base_watchdog_timeout" value="0.2" />
+	</node>
+	
+		<node name="rviz" pkg="rviz" type="rviz"
+		args="-d $(find delayed_teleop)/config/rviz-forward-shared-control.vcg" />
+	
+	<node name="fake_localization" pkg="fake_localization" type="fake_localization"
+		respawn="false" />
+
+	<node pkg="joy" type="joy_node" name="joy"></node>
+	
+
+<include file="$(find delayed_teleop)/config/forward_shared_control/move_base.xml" />
+
+<!-- 	<node pkg="teleop_joy" type="teleop_joy" name="teleop_joy">
+		<param name="axis_linear" value="1"></param>
+		<param name="axis_angular" value="0"></param>
+		<param name="scale_angular" value="2.5"></param>
+		<param name="scale_linear" value="2.5"></param>
+		<param name="robot_base_link" value="base_link" />
+	</node>
+ -->
+</launch>

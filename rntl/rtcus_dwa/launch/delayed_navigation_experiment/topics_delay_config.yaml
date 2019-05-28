@@ -1,0 +1,38 @@
+delayed_topics: [
+   {
+    input_topic_name: scan, 
+    output_topic_name: delayed_scan, 
+    topic_type: sensor_msgs/LaserScan, 
+    delay_mean: 0.5, 
+    delay_std: 0.00000001,
+    rebuild_timestamp: false
+#   frame_format: tf_delayed_%s
+   },
+
+   {
+    input_topic_name: odom, 
+    output_topic_name: delayed_odom, 
+    topic_type: nav_msgs/Odometry, 
+    delay_mean: 0.5, 
+    delay_std: 0.00000001,
+    rebuild_timestamp: false
+   },
+
+   {
+    input_topic_name: cmd_vel, 
+    output_topic_name: delayed_cmd_vel, 
+    topic_type: rtcus_nav_msgs/StampedTwist2D, 
+    delay_mean: 0.5, 
+    delay_std: 0.00000001,
+    rebuild_timestamp: false
+#   frame_format: tf_delayed_%s
+   }    ]
+   
+#tfMapping: 
+#   {
+#    prefix: /tf_delayed_, 
+#    fixed_frame: /map, 
+#    delay_mean: 0.05, 
+#    delay_std: 0.00000001
+#   }
+   

@@ -1,0 +1,23 @@
+<launch>
+  	<node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser_link" args="0 0 0 0 0 0 base_footprint base_link 40"  machine="erratic"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser_link2" args="0 0 0 0 0 0 base_link base_laser_link 40" machine="erratic"/>
+  
+    <!-- local and global planning node -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" machine="erratic">
+    	<param name="controller_frequency" value="10"/>
+		<rosparam file="$(find rtcus_erratic_slam)/config/footprint.yaml" command="load" />
+	
+		<rosparam file="$(find rtcus_erratic_slam)/config/costmap_common.yaml" command="load" ns="global_costmap" />
+		<rosparam file="$(find rtcus_erratic_slam)/explore/global_costmap.yaml" command="load" />
+		
+		<param name="base_global_planner" value="SBPLLatticePlanner" />
+		<param name="SBPLLatticePlanner/primitive_filename" value="$(find sbpl)/matlab/mprim/unicycle.mprim" />
+    	 	<rosparam file="$(find rtcus_erratic_slam)/explore/sbpl_global_params.yaml" command="load" />
+
+    	 	<rosparam file="$(find rtcus_erratic_slam)/explore/navfn_params.yaml" command="load" />
+	
+		<rosparam file="$(find rtcus_erratic_slam)/config/costmap_common.yaml" command="load" ns="local_costmap" />
+		<rosparam file="$(find rtcus_erratic_slam)/explore/local_costmap.yaml" command="load" />
+		<rosparam file="$(find rtcus_erratic_slam)/explore/trajectory_planner_params.yaml" command="load" />
+    </node>
+</launch>

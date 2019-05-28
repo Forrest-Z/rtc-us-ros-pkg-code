@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject>
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.core.default.config.1">
+			<storageModule buildSystemId="org.eclipse.cdt.core.defaultConfigDataProvider" id="org.eclipse.cdt.core.default.config.1" moduleId="org.eclipse.cdt.core.settings" name="Configuration">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping">
+				<project-mappings/>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+				<buildTargets>
+					<target name=": ROSBUILD_genmsg_cpp" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>ROSBUILD_genmsg_cpp</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": ROSBUILD_genmsg_lisp" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>ROSBUILD_genmsg_lisp</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": ROSBUILD_gensrv_cpp" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>ROSBUILD_gensrv_cpp</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": ROSBUILD_gensrv_lisp" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>ROSBUILD_gensrv_lisp</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": clean-test-results" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>clean-test-results</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": pyunit_test_DtwTest.py" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>pyunit_test_DtwTest.py</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": pyunit_test_GMMGestureModelTest.py" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>pyunit_test_GMMGestureModelTest.py</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": pyunit_test_GestureEntryTest.py" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>pyunit_test_GestureEntryTest.py</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rebuild_cache" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rebuild_cache</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rosbuild_precompile" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rosbuild_precompile</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rosbuild_premsgsrvgen" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rosbuild_premsgsrvgen</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rospack_genmsg" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rospack_genmsg</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rospack_genmsg_libexe" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rospack_genmsg_libexe</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rospack_gensrv" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rospack_gensrv</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rostest_test_LbDTests.test" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rostest_test_LbDTests.test</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": rostest_test_LbDTests.test_result" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>rostest_test_LbDTests.test_result</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test-future" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test-future</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test-results" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test-results</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test-results-run" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test-results-run</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test_DtwTest.py_result" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test_DtwTest.py_result</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test_GMMGestureModelTest.py_result" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test_GMMGestureModelTest.py_result</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": test_GestureEntryTest.py_result" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>test_GestureEntryTest.py_result</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": tests" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>tests</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": all" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>all</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+					<target name=": clean" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+						<buildCommand>/usr/bin/make</buildCommand>
+						<buildArguments/>
+						<buildTarget>clean</buildTarget>
+						<stopOnError>true</stopOnError>
+						<useDefaultCommand>false</useDefaultCommand>
+					</target>
+				</buildTargets>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="rtcus_kinect_gestures.null.1" name="rtcus_kinect_gestures"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
+		<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+			<buildOutputProvider>
+				<openAction enabled="true" filePath=""/>
+				<parser enabled="true"/>
+			</buildOutputProvider>
+			<scannerInfoProvider id="specsFile">
+				<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="/usr/bin/gcc" useDefault="true"/>
+				<parser enabled="true"/>
+			</scannerInfoProvider>
+		</profile>
+		<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+			<buildOutputProvider>
+				<openAction enabled="true" filePath=""/>
+				<parser enabled="true"/>
+			</buildOutputProvider>
+			<scannerInfoProvider id="makefileGenerator">
+				<runAction arguments="-f ${project_name}_scd.mk" command="/usr/bin/make" useDefault="true"/>
+				<parser enabled="true"/>
+			</scannerInfoProvider>
+		</profile>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+		<pathentry include="/opt/ros/rtc-us-ros-pkg/branches/rtcus_kinect_gestures/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/geometry/tf/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/geometry/tf/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/geometry/tf/srv_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/common_msgs/sensor_msgs/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/bullet/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/geometry/angles/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/utilities/message_filters/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/common_msgs/visualization_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/tools/rosbag/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/tools/topic_tools/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/tools/rostest/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/messages/std_msgs/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/orocos_kinematics_dynamics/orocos_kdl/install_dir/include" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include/eigen3" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/src" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/tools/rosconsole/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/utilities/rostime/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/utilities/cpp_common/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/ros/core/roslib/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/ros/core/roslib/include" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/ros/tools/rospack" kind="inc" path="" system="true"/>
+		<pathentry include="/opt/ros/electric/ros/tools/rospack/include" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include" kind="inc" path="" system="true"/>
+		<pathentry base-path="electric" include="stacks/common_msgs/visualization_msgs/msg_gen/cpp/include" kind="inc" path="" system="true"/>
+		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
+		<pathentry kind="src" path=""/>
+	</storageModule>
+</cproject>
